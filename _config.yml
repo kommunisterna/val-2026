@@ -1,0 +1,22 @@
+title: AI News
+description: A community for AI and technology news
+url: ""
+baseurl: ""
+
+permalink: /:categories/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+plugins:
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .pages.yml

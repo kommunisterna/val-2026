@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<p class="page-title">{{ page.title }}</p>
+{% if page.description %}
+<p class="topic-description">{{ page.description }}</p>
+{% endif %}
+
+<ol class="post-list">
+  {% assign topic_posts = site.posts | where: "topic", page.topic | sort: "date" | reverse %}
+  {% for post in topic_posts %}
+  <li>
+    <div class="post-title-line">
+      {% if post.link %}
+        <a class="post-link" href="{{ post.link }}">{{ post.title }}</a>
+        <span class="post-domain">({{ post.link | remove: "https://" | remove: "http://" | remove: "www." | split: "/" | first }})</span>
+      {% else %}
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      {% endif %}
+    </div>
+    <div class="post-meta">
+      {{ post.date | date: "%B %d, %Y" }}
+    </div>
+  </li>
+  {% endfor %}
+</ol>

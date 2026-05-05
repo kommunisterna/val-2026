@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  {% seo %}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f6f6ef;
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 10pt;
+      color: #000000;
+    }
+
+    a {
+      color: #000000;
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: #828282;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .site-header {
+      background-color: #ff6600;
+      padding: 2px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .site-header .site-title {
+      font-weight: bold;
+      color: #000000;
+      font-size: 13pt;
+      text-decoration: none;
+    }
+
+    .site-header .site-title:visited {
+      color: #000000;
+    }
+
+    .site-header nav {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .site-header nav a {
+      color: #000000;
+      font-size: 10pt;
+    }
+
+    .site-header nav a:visited {
+      color: #000000;
+    }
+
+    .site-header nav .separator {
+      color: #000000;
+    }
+
+    .site-content {
+      padding: 10px;
+      max-width: 85%;
+    }
+
+    .post-list {
+      list-style: none;
+      counter-reset: post-counter;
+    }
+
+    .post-list li {
+      margin-bottom: 5px;
+      counter-increment: post-counter;
+    }
+
+    .post-list li .post-title-line {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+    }
+
+    .post-list li .post-title-line::before {
+      content: counter(post-counter) ".";
+      color: #828282;
+      min-width: 2em;
+      text-align: right;
+    }
+
+    .post-list li .post-title-line a.post-link {
+      font-size: 10pt;
+    }
+
+    .post-list li .post-title-line .post-domain {
+      font-size: 8pt;
+      color: #828282;
+    }
+
+    .post-list li .post-meta {
+      margin-left: calc(2em + 5px);
+      font-size: 8pt;
+      color: #828282;
+    }
+
+    .post-list li .post-meta a {
+      color: #828282;
+    }
+
+    .post-body {
+      margin-top: 15px;
+      line-height: 1.4;
+    }
+
+    .post-body p {
+      margin-bottom: 10px;
+    }
+
+    .page-title {
+      font-size: 10pt;
+      font-weight: normal;
+      margin-bottom: 10px;
+      color: #828282;
+    }
+
+    .topic-description {
+      margin-bottom: 10px;
+      color: #828282;
+      font-size: 9pt;
+    }
+
+    .site-footer {
+      border-top: 2px solid #ff6600;
+      margin-top: 20px;
+      padding: 10px;
+      text-align: center;
+      color: #828282;
+      font-size: 8pt;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    <nav>
+      <span class="separator">|</span>
+      <a href="{{ '/topics/technology/' | relative_url }}">Technology</a>
+      <span class="separator">|</span>
+      <a href="{{ '/topics/science/' | relative_url }}">Science</a>
+      <span class="separator">|</span>
+      <a href="{{ '/topics/startups/' | relative_url }}">Startups</a>
+    </nav>
+  </header>
+
+  <main class="site-content">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <p>{{ site.title }} &mdash; {{ site.description }}</p>
+  </footer>
+</body>
+</html>

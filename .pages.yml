@@ -1,11 +1,112 @@
-media: media
+media: assets/media
+
 content:
-  - name: pages
-    label: Pages
+  - name: posts
+    label: Posts
     type: collection
-    path: docs
+    path: _posts
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      primary: title
+      sort: date
+      order: desc
+      fields:
+        - title
+        - topic
+        - date
     fields:
       - name: title
+        label: Title
         type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: topic
+        label: Topic
+        type: select
+        required: true
+        options:
+          - Technology
+          - Science
+          - Startups
+      - name: link
+        label: External Link
+        type: string
+        description: "URL to external article (leave empty to link to the post itself)"
       - name: body
+        label: Body
         type: rich-text
+
+  - name: topics
+    label: Topic Pages
+    type: group
+    items:
+      - name: technology
+        label: Technology
+        type: file
+        path: topics/technology.md
+        format: yaml-frontmatter
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: description
+            label: Description
+            type: string
+          - name: topic
+            label: Topic Key
+            type: string
+            hidden: true
+
+      - name: science
+        label: Science
+        type: file
+        path: topics/science.md
+        format: yaml-frontmatter
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: description
+            label: Description
+            type: string
+          - name: topic
+            label: Topic Key
+            type: string
+            hidden: true
+
+      - name: startups
+        label: Startups
+        type: file
+        path: topics/startups.md
+        format: yaml-frontmatter
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: description
+            label: Description
+            type: string
+          - name: topic
+            label: Topic Key
+            type: string
+            hidden: true
+
+  - name: settings
+    label: Site Settings
+    type: file
+    path: _config.yml
+    format: yaml
+    fields:
+      - name: title
+        label: Site Title
+        type: string
+      - name: description
+        label: Site Description
+        type: string
+      - name: url
+        label: Site URL
+        type: string

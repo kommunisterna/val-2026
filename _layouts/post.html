@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<p class="page-title">
+  {% if page.link %}
+    <a href="{{ page.link }}">{{ page.title }}</a>
+    <span class="post-domain">({{ page.link | remove: "https://" | remove: "http://" | remove: "www." | split: "/" | first }})</span>
+  {% else %}
+    {{ page.title }}
+  {% endif %}
+</p>
+<div class="post-meta">
+  {{ page.date | date: "%B %d, %Y" }} | <a href="{{ '/topics/' | append: page.topic | downcase | append: '/' | relative_url }}">{{ page.topic }}</a>
+</div>
+
+<div class="post-body">
+  {{ content }}
+</div>
