@@ -1,7 +1,8 @@
-title: City People
-description: Discover people in cities around the world
+title: Kommunistiska Partiet
+description: Valsida
 url: ""
 baseurl: ""
+logotype: https://kommunisterna.org/sites/all/themes/responsive/images/logotyp-hemsida4.png
 
 collections:
   cities:

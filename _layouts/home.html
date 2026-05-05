@@ -2,16 +2,28 @@
 layout: default
 ---
 
-<div class="city-grid">
-  {% for city in site.cities %}
-  <a class="city-card" href="{{ city.url | relative_url }}">
-    {% if city.cover_image %}
-    <img src="{{ city.cover_image | relative_url }}" alt="{{ city.title }}">
-    {% endif %}
-    <div class="city-card-body">
-      <h2>{{ city.title }}</h2>
-      {% if city.description %}<p>{{ city.description }}</p>{% endif %}
+<div id="page-wrapper-row1">
+  <div class="grid grid-pad">
+    <div class="col-1-1">
+      <h2>Kommuner</h2>
     </div>
-  </a>
-  {% endfor %}
+  </div>
+</div>
+
+<div id="page-wrapper-row2">
+  <div id="page" class="grid grid-pad">
+    {% for city in site.cities %}
+    <a class="col-4-12 no-text-decoration" href="{{ city.url | relative_url }}">
+      <div class="block">
+        <div class="content">
+          {% if city.cover_image %}
+          <img src="{{ city.cover_image | relative_url }}" alt="{{ city.title }}">
+          {% endif %}
+          <h2>{{ city.title }}</h2>
+          {% if city.description %}<p>{{ city.description }}</p>{% endif %}
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
 </div>

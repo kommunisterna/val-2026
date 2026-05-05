@@ -2,33 +2,47 @@
 layout: default
 ---
 
-<div class="city-header">
-  <h1>{{ page.title }}</h1>
-  {% if page.description %}
-  <p class="city-description">{{ page.description }}</p>
-  {% endif %}
-  {% if page.cover_image %}
-  <img src="{{ page.cover_image | relative_url }}" alt="{{ page.title }}">
-  {% endif %}
+<div id="page-wrapper-row1">
+  <div class="grid grid-pad">
+    <div class="col-1-1">
+      {% if page.cover_image %}
+      <img src="{{ page.cover_image | relative_url }}" alt="{{ page.title }}">
+      {% endif %}
+      <h1>{{ page.title }}</h1>
+      {% if page.description %}
+      <p>{{ page.description }}</p>
+      {% endif %}
+    </div>
+  </div>
 </div>
 
 {% if content != "" %}
-<div class="city-body">
-  {{ content }}
+<div id="page-wrapper-row2">
+  <div class="grid grid-pad">
+    <div class="col-1-1">
+      {{ content }}
+    </div>
+  </div>
 </div>
 {% endif %}
 
 {% assign city_people = site.people | where: "city", page.slug %}
 {% if city_people.size > 0 %}
-<div class="people-section">
-  <h2>People</h2>
-  <div class="people-grid">
+<div id="page-wrapper-row3">
+  <div id="page" class="grid grid-pad">
+    <div class="col-1-1">
+      <h2>Personer</h2>
+    </div>
     {% for person in city_people %}
-    <div class="person-card">
-      {% if person.photo %}
-      <img src="{{ person.photo | relative_url }}" alt="{{ person.name }}">
-      {% endif %}
-      <p class="person-name">{{ person.name }}</p>
+    <div class="col-4-12">
+      <div class="block">
+        <div class="content">
+          {% if person.photo %}
+          <img src="{{ person.photo | relative_url }}" alt="{{ person.name }}">
+          {% endif %}
+          <p><strong>{{ person.name }}</strong></p>
+        </div>
+      </div>
     </div>
     {% endfor %}
   </div>

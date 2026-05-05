@@ -1,7 +1,7 @@
 ---
 title: Stockholm
-description: The capital of Sweden, built on 14 islands.
+description: Sveriges huvudstad, byggd på 14 öar.
 cover_image: /assets/media/stockholm.jpg
 ---
 
-Stockholm is a vibrant city known for its stunning architecture, rich history, and innovative tech scene.
+Stockholm är en levande stad känd för sin vackra arkitektur, rika historia och innovativa teknikscen.
