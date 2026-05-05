@@ -1,16 +1,21 @@
-title: AI News
-description: A community for AI and technology news
+title: City People
+description: Discover people in cities around the world
 url: ""
 baseurl: ""
 
-permalink: /:categories/:title/
+collections:
+  cities:
+    output: true
+    permalink: /:slug/
+  people:
+    output: false
 
 defaults:
   - scope:
       path: ""
-      type: "posts"
+      type: "cities"
     values:
-      layout: "post"
+      layout: "city"
 
 plugins:
   - jekyll-seo-tag

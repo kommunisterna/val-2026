@@ -1,99 +1,58 @@
 media: assets/media
 
 content:
-  - name: posts
-    label: Posts
+  - name: cities
+    label: Cities
     type: collection
-    path: _posts
+    path: _cities
     format: yaml-frontmatter
-    filename: "{year}-{month}-{day}-{primary}.md"
     view:
       primary: title
-      sort: date
-      order: desc
       fields:
         - title
-        - topic
-        - date
+        - description
     fields:
       - name: title
         label: Title
         type: string
         required: true
-      - name: date
-        label: Date
-        type: date
-        required: true
-      - name: topic
-        label: Topic
-        type: select
-        required: true
-        options:
-          - Technology
-          - Science
-          - Startups
-      - name: link
-        label: External Link
+      - name: description
+        label: Description
         type: string
-        description: "URL to external article (leave empty to link to the post itself)"
+      - name: cover_image
+        label: Cover Image
+        type: image
       - name: body
         label: Body
         type: rich-text
 
-  - name: topics
-    label: Topic Pages
-    type: group
-    items:
-      - name: technology
-        label: Technology
-        type: file
-        path: topics/technology.md
-        format: yaml-frontmatter
-        fields:
-          - name: title
-            label: Title
-            type: string
-          - name: description
-            label: Description
-            type: string
-          - name: topic
-            label: Topic Key
-            type: string
-            hidden: true
-
-      - name: science
-        label: Science
-        type: file
-        path: topics/science.md
-        format: yaml-frontmatter
-        fields:
-          - name: title
-            label: Title
-            type: string
-          - name: description
-            label: Description
-            type: string
-          - name: topic
-            label: Topic Key
-            type: string
-            hidden: true
-
-      - name: startups
-        label: Startups
-        type: file
-        path: topics/startups.md
-        format: yaml-frontmatter
-        fields:
-          - name: title
-            label: Title
-            type: string
-          - name: description
-            label: Description
-            type: string
-          - name: topic
-            label: Topic Key
-            type: string
-            hidden: true
+  - name: people
+    label: People
+    type: collection
+    path: _people
+    format: yaml-frontmatter
+    view:
+      primary: name
+      fields:
+        - name
+        - city
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: photo
+        label: Photo
+        type: image
+        required: true
+      - name: city
+        label: City
+        type: reference
+        required: true
+        options:
+          collection: cities
+          value: "{slug}"
+          label: "{title}"
 
   - name: settings
     label: Site Settings
