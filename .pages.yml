@@ -2,7 +2,7 @@ media: assets/media
 
 content:
   - name: cities
-    label: Cities
+    label: Kommuner
     type: collection
     path: _cities
     format: yaml-frontmatter
@@ -13,21 +13,21 @@ content:
         - description
     fields:
       - name: title
-        label: Title
+        label: Titel
         type: string
         required: true
       - name: description
-        label: Description
+        label: Beskrivning
         type: string
       - name: cover_image
-        label: Cover Image
+        label: Omslagsbild
         type: image
       - name: body
-        label: Body
+        label: Brödtext
         type: rich-text
 
   - name: people
-    label: People
+    label: Kandidater
     type: collection
     path: _people
     format: yaml-frontmatter
@@ -38,15 +38,15 @@ content:
         - city
     fields:
       - name: name
-        label: Name
+        label: Namn
         type: string
         required: true
       - name: photo
-        label: Photo
+        label: Foto
         type: image
         required: true
       - name: city
-        label: City
+        label: Kommun
         type: reference
         required: true
         options:
@@ -55,17 +55,17 @@ content:
           label: "{title}"
 
   - name: settings
-    label: Site Settings
+    label: Sidinställningar
     type: file
     path: _config.yml
     format: yaml
     fields:
       - name: title
-        label: Site Title
+        label: Sidtitel
         type: string
       - name: description
-        label: Site Description
+        label: Sidbeskrivning
         type: string
       - name: url
-        label: Site URL
+        label: Sidans URL
         type: string
