@@ -55,7 +55,8 @@ content:
         required: true
         options:
           collection: cities
-          value: "{slug}"
+          search: "title"
+          value: "{title}"
           label: "{title}"
 
   - name: settings
