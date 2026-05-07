@@ -32,19 +32,23 @@ content:
     path: _people
     format: yaml-frontmatter
     view:
-      primary: name
+      primary: full_name
       fields:
-        - name
+        - full_name
         - city
     fields:
-      - name: name
+      - name: full_name
         label: Namn
         type: string
+        required: true
+      - name: ballot_position
+        label: Plats i valsedeln
+        type: number
         required: true
       - name: photo
         label: Foto
         type: image
-        required: true
+        required: false
       - name: city
         label: Kommun
         type: reference

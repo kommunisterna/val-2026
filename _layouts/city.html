@@ -31,16 +31,16 @@ layout: default
 <div id="page-wrapper-row3">
   <div id="page" class="grid grid-pad">
     <div class="col-1-1">
-      <h2>Personer</h2>
+      <h2>Kandidater</h2>
     </div>
     {% for person in city_people %}
     <div class="col-4-12">
       <div class="block">
         <div class="content">
           {% if person.photo %}
-          <img src="{{ person.photo | relative_url }}" alt="{{ person.name }}">
+          <img src="{{ person.photo | relative_url }}" alt="{{ person.full_name }}">
           {% endif %}
-          <p><strong>{{ person.name }}</strong></p>
+          <p><strong>{{ person.full_name }}</strong></p>
         </div>
       </div>
     </div>
