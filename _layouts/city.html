@@ -13,6 +13,11 @@ layout: default
 <div id="page-wrapper-row2">
   <div class="grid grid-pad">
     <div class="col-1-2">
+      {% if content != "" %}
+      <div class="block">
+        {{ content }}
+      </div>
+      {% endif %}
       <div class="block">
         <h2>Kontakt & länkar</h2>
         <ul>
@@ -23,15 +28,10 @@ layout: default
           <li><strong>Webbsida:</strong> <a href="{{ page.website }}">{{ page.website }}</a></li>
           {% endif %}
           {% if page.flyer_link %}
-          <li><strong>Flyer:</strong> <a href="{{ page.flyer_link }}">{{ page.flyer_link }}</a></li>
+          <li><strong>Flygblad:</strong> <a href="{{ page.flyer_link }}">{{ page.flyer_link }}</a></li>
           {% endif %}
         </ul>
       </div>
-      {% if content != "" %}
-      <div class="block">
-        {{ content }}
-      </div>
-      {% endif %}
     </div>
 
     <div class="col-1-2">

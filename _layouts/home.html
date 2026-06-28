@@ -12,7 +12,8 @@ layout: default
 
 <div id="page-wrapper-row2">
   <div id="page" class="grid grid-pad">
-    {% for city in site.cities %}
+    {% assign ordered_cities = site.cities | sort:"title" %}
+    {% for city in ordered_cities %}
     <a class="col-4-12 no-text-decoration" href="{{ city.url | relative_url }}">
       <div class="block">
         <div class="content">

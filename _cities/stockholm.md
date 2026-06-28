@@ -27,3 +27,5 @@ candidate_lists:
       - Johan Wiman, lärare, Huddinge, 64 år
       - Lars Simmons, pensionerad järnvägsarbetare, Bromma, 83 år
 ---
+
+I Stockholm ställer partiet upp i både kommunval och regionval.

@@ -11,6 +11,11 @@ content:
       fields:
         - title
         - email
+        - website
+      sort: [title]
+      default:
+        sort: title
+        order: asc
     fields:
       - name: title
         label: Titel
@@ -23,26 +28,29 @@ content:
         label: Webbsida
         type: string
       - name: flyer_link
-        label: Länk till flyer
+        label: Länk till flygblad
         type: string
+      - name: body
+        label: Brödtext
+        type: rich-text
       - name: candidate_lists
         label: Kandidatlistor
-        type: list
-        item:
-          type: object
-          fields:
-            - name: title
-              label: Titel
-              type: string
-              required: true
-            - name: ballot_link
-              label: Länk till valsedel
-              type: string
-            - name: candidates
-              label: Kandidater
-              type: list
-              item:
-                type: string
+        type: object
+        list:
+          collapsible:
+            summary: "{title}"
+        fields:
+          - name: title
+            label: Titel
+            type: string
+            required: true
+          - name: ballot_link
+            label: Länk till valsedel
+            type: string
+          - name: candidates
+            label: Kandidater
+            type: string
+            list: true
 
   - name: settings
     label: Sidinställningar
