@@ -22,9 +22,6 @@ content:
       - name: website
         label: Webbsida
         type: string
-      - name: ballot_link
-        label: Länk till valsedel
-        type: string
       - name: flyer_link
         label: Länk till flyer
         type: string
@@ -38,6 +35,9 @@ content:
               label: Titel
               type: string
               required: true
+            - name: ballot_link
+              label: Länk till valsedel
+              type: string
             - name: candidates
               label: Kandidater
               type: list

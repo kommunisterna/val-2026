@@ -13,7 +13,6 @@ layout: default
 <div id="page-wrapper-row2">
   <div class="grid grid-pad">
     <div class="col-1-2">
-      {% if page.email or page.website or page.ballot_link or page.flyer_link %}
       <div class="block">
         <h2>Kontakt & länkar</h2>
         <ul>
@@ -22,9 +21,6 @@ layout: default
           {% endif %}
           {% if page.website %}
           <li><strong>Webbsida:</strong> <a href="{{ page.website }}">{{ page.website }}</a></li>
-          {% endif %}
-          {% if page.ballot_link %}
-          <li><strong>Valsedel:</strong> <a href="{{ page.ballot_link }}">{{ page.ballot_link }}</a></li>
           {% endif %}
           {% if page.flyer_link %}
           <li><strong>Flyer:</strong> <a href="{{ page.flyer_link }}">{{ page.flyer_link }}</a></li>
@@ -46,6 +42,9 @@ layout: default
         {% for list in page.candidate_lists %}
         <section class="candidate-list">
           <h3>{{ list.title }}</h3>
+          {% if list.ballot_link %}
+          <p><strong>Valsedel:</strong> <a href="{{ list.ballot_link }}">{{ list.ballot_link }}</a></p>
+          {% endif %}
           <div class="text-block">
             <ol>
               {% for candidate in list.candidates %}
