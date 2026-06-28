@@ -16,11 +16,7 @@ layout: default
     <a class="col-4-12 no-text-decoration" href="{{ city.url | relative_url }}">
       <div class="block">
         <div class="content">
-          {% if city.cover_image %}
-          <img src="{{ city.cover_image | relative_url }}" alt="{{ city.title }}">
-          {% endif %}
           <h2>{{ city.title }}</h2>
-          {% if city.description %}<p>{{ city.description }}</p>{% endif %}
         </div>
       </div>
     </a>
