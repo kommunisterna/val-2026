@@ -1,0 +1,16 @@
+---
+title: Gislaved
+email: gislaved@kommunisterna.org
+candidate_lists:
+  - title: Kommunval
+    candidates:
+      - Erik Anderson, Tidningsbud
+      - Kent Heijel, Pensionerad verktygsarbetare
+      - Fingal Anderson Edvardsson, Musikstuderande
+      - Kerstin Elg, Träindustriarbetare
+      - Rose-Marie Josefsson, Pensionär
+      - Andreas Curcija, Fabriksarbetare
+      - Kjell Blomqvist, Pensionerad personlig assistent
+      - Mohammed Shihabi, Bussförare
+      - Christer Weidman, Metallarbetare
+---

@@ -1,6 +1,34 @@
 ---
 title: Göteborg
-description: Sveriges andra stad, känd för sin hamn och sitt rika kulturliv.
-cover_image: /assets/media/goteborg.jpg
+email: goteborg@kommunisterna.org
+candidate_lists:
+  - title: Kommunval
+    candidates:
+      - Pia Jacobsen, administratör
+      - Simon Hedelin, järnvägsarbetare
+      - Max Popovski, journalist på Proletären
+      - Ingrid Frejd, sjuksköterska
+      - Povel Johansson, lokförare, partiordförande
+      - Leonora Lundvall, intensivvårdssjuksköterska
+      - Love Puke, fritidsledare
+      - Björn Åkerman, spårvagnsreparatör
+      - Jonatan Fahlén, lagerarbetare
+      - Heidi Jensen, stödassistent
+      - Henrik Källén, idrottsledare
+      - Agnes Johansson, undersköterska
+      - Gabriel Olaurim, SKF-arbetare
+      - Sri Nimpuno, pensionär
+      - José Romero Jaldin, pensionär
+      - Nora Rapo, förbundssekreterare, vårdbiträde
+      - Tor Härnqvist, infektionsläkare
+      - Agneta Samuelsson, miljövärd
+      - Jonas Hjelm-Smith, tandtekniker
+      - Matilda Storbacka, förskollärare
+      - Hannah Ascher, sjuksköterska
+      - Thomas Dahlén, pensionär
+      - Alexandra Nätteldal Nylund, restaurangarbetare
+      - Lina Widén, student
+      - Torgny Johansson, pensionär
+      - Inga-Lill Atterlöf, psykiatrisjuksköterska
+      - Joakim Olofsson, administratör
 ---
-Göteborg är en stad med stark arbetartradition, levande kultur och närhet till havet.

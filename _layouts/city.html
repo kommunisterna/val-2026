@@ -5,46 +5,58 @@ layout: default
 <div id="page-wrapper-row1">
   <div class="grid grid-pad">
     <div class="col-1-1">
-      {% if page.cover_image %}
-      <img src="{{ page.cover_image | relative_url }}" alt="{{ page.title }}">
-      {% endif %}
       <h1>{{ page.title }}</h1>
-      {% if page.description %}
-      <p>{{ page.description }}</p>
-      {% endif %}
     </div>
   </div>
 </div>
 
-{% if content != "" %}
 <div id="page-wrapper-row2">
   <div class="grid grid-pad">
-    <div class="col-1-1">
-      {{ content }}
-    </div>
-  </div>
-</div>
-{% endif %}
-
-{% assign city_people = site.people | where: "city", page.slug %}
-{% if city_people.size > 0 %}
-<div id="page-wrapper-row3">
-  <div id="page" class="grid grid-pad">
-    <div class="col-1-1">
-      <h2>Kandidater</h2>
-    </div>
-    {% for person in city_people %}
-    <div class="col-4-12">
+    <div class="col-1-2">
+      {% if page.email or page.website or page.ballot_link or page.flyer_link %}
       <div class="block">
-        <div class="content">
-          {% if person.photo %}
-          <img src="{{ person.photo | relative_url }}" alt="{{ person.full_name }}">
+        <h2>Kontakt & länkar</h2>
+        <ul>
+          {% if page.email %}
+          <li><strong>E-post:</strong> <a href="mailto:{{ page.email }}">{{ page.email }}</a></li>
           {% endif %}
-          <p><strong>{{ person.full_name }}</strong></p>
-        </div>
+          {% if page.website %}
+          <li><strong>Webbsida:</strong> <a href="{{ page.website }}">{{ page.website }}</a></li>
+          {% endif %}
+          {% if page.ballot_link %}
+          <li><strong>Valsedel:</strong> <a href="{{ page.ballot_link }}">{{ page.ballot_link }}</a></li>
+          {% endif %}
+          {% if page.flyer_link %}
+          <li><strong>Flyer:</strong> <a href="{{ page.flyer_link }}">{{ page.flyer_link }}</a></li>
+          {% endif %}
+        </ul>
       </div>
+      {% endif %}
+      {% if content != "" %}
+      <div class="block">
+        {{ content }}
+      </div>
+      {% endif %}
     </div>
-    {% endfor %}
+
+    <div class="col-1-2">
+      {% if page.candidate_lists %}
+      <div class="block">
+        <h2>Kandidatlistor</h2>
+        {% for list in page.candidate_lists %}
+        <section class="candidate-list">
+          <h3>{{ list.title }}</h3>
+          <div class="text-block">
+            <ol>
+              {% for candidate in list.candidates %}
+                <li>{{ candidate }}</li>
+              {% endfor %}
+            </ol>
+          </div>
+        </section>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
   </div>
 </div>
-{% endif %}

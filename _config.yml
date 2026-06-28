@@ -8,8 +8,6 @@ collections:
   cities:
     output: true
     permalink: /:slug/
-  people:
-    output: false
 
 defaults:
   - scope:

@@ -10,54 +10,39 @@ content:
       primary: title
       fields:
         - title
-        - description
+        - email
     fields:
       - name: title
         label: Titel
         type: string
         required: true
-      - name: description
-        label: Beskrivning
+      - name: email
+        label: E-post
         type: string
-      - name: cover_image
-        label: Omslagsbild
-        type: image
-      - name: body
-        label: Brödtext
-        type: rich-text
-
-  - name: people
-    label: Kandidater
-    type: collection
-    path: _people
-    format: yaml-frontmatter
-    view:
-      primary: full_name
-      fields:
-        - full_name
-        - city
-    fields:
-      - name: full_name
-        label: Namn
+      - name: website
+        label: Webbsida
         type: string
-        required: true
-      - name: ballot_position
-        label: Plats i valsedeln
-        type: number
-        required: true
-      - name: photo
-        label: Foto
-        type: image
-        required: false
-      - name: city
-        label: Kommun
-        type: reference
-        required: true
-        options:
-          collection: cities
-          search: "title"
-          value: "{title}"
-          label: "{title}"
+      - name: ballot_link
+        label: Länk till valsedel
+        type: string
+      - name: flyer_link
+        label: Länk till flyer
+        type: string
+      - name: candidate_lists
+        label: Kandidatlistor
+        type: list
+        item:
+          type: object
+          fields:
+            - name: title
+              label: Titel
+              type: string
+              required: true
+            - name: candidates
+              label: Kandidater
+              type: list
+              item:
+                type: string
 
   - name: settings
     label: Sidinställningar
