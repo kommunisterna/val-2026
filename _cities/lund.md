@@ -1,6 +1,7 @@
 ---
 title: Lund
 email: lund@kommunisterna.org
+coordinates: [55.704, 13.193]
 candidate_lists:
   - title: Kommunval
     candidates:

@@ -52,6 +52,49 @@ content:
             type: string
             list: true
 
+  - name: main
+    label: Huvudtext
+    type: file
+    path: _data/main.yml
+    format: yaml
+    fields:
+      - name: content
+        label: Innehåll
+        type: rich-text
+
+  - name: policy_main
+    label: Våra viktigaste frågor
+    type: file
+    path: _data/policy_main.yml
+    format: yaml
+    fields:
+      - name: content
+        label: Innehåll
+        type: rich-text
+
+  - name: policy_topics
+    label: Politik A–Ö
+    type: file
+    path: _data/policy_topics.yml
+    format: yaml
+    fields:
+      - name: policy_topics
+        label: Politikposter
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Rubrik
+            type: string
+            required: true
+          - name: description
+            label: Beskrivning
+            type: text
+            required: true
+          - name: link
+            label: Länk (valfri)
+            type: string
+
   - name: settings
     label: Sidinställningar
     type: file

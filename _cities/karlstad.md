@@ -1,6 +1,7 @@
 ---
 title: Karlstad
 email: karlstad@kommunisterna.org
+coordinates: [59.379, 13.503]
 candidate_lists:
   - title: Kommunval
     candidates:

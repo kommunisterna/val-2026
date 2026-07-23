@@ -1,6 +1,7 @@
 ---
 title: Göteborg
 email: goteborg@kommunisterna.org
+coordinates: [57.708, 11.974]
 candidate_lists:
   - title: Kommunval
     candidates:

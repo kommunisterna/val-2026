@@ -1,6 +1,7 @@
 ---
 title: Växjö
 email: vaxjo@kommunisterna.org
+coordinates: [56.878, 14.809]
 candidate_lists:
   - title: Kommunval
     candidates:

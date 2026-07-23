@@ -1,129 +1,79 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="sv" dir="ltr">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="MobileOptimized" content="width" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="HandheldFriendly" content="true" />
-    <!-- responsive favicons: -->
-    <link
-      rel="apple-touch-icon-precomposed"
-      sizes="144x144"
-      href="https://kommunisterna.org/sites/all/themes/responsive/images/favicon/apple-touch-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon-precomposed"
-      sizes="152x152"
-      href="https://kommunisterna.org/sites/all/themes/responsive/images/favicon/apple-touch-icon-152x152.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://kommunisterna.org/sites/all/themes/responsive/images/favicon/favicon-32x32.png"
-      sizes="32x32"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://kommunisterna.org/sites/all/themes/responsive/images/favicon/favicon-16x16.png"
-      sizes="16x16"
-    />
-    <title>
-      {% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{
-      site.title }}{% endif %}
-    </title>
-    {% seo %}
-    <style type="text/css" media="all">
-      @import url("https://kommunisterna.org/modules/system/system.base.css?swm49i");
-      @import url("https://kommunisterna.org/modules/system/system.menus.css?swm49i");
-      @import url("https://kommunisterna.org/modules/system/system.messages.css?swm49i");
-      @import url("https://kommunisterna.org/modules/system/system.theme.css?swm49i");
-    </style>
-    <style type="text/css" media="all">
-      @import url("https://kommunisterna.org/modules/comment/comment.css?swm49i");
-      @import url("https://kommunisterna.org/sites/all/modules/date/date_api/date.css?swm49i");
-      @import url("https://kommunisterna.org/sites/all/modules/date/date_popup/themes/datepicker.1.7.css?swm49i");
-      @import url("https://kommunisterna.org/sites/all/modules/date/date_repeat_field/date_repeat_field.css?swm49i");
-      @import url("https://kommunisterna.org/modules/field/theme/field.css?swm49i");
-      @import url("https://kommunisterna.org/modules/node/node.css?swm49i");
-      @import url("https://kommunisterna.org/modules/user/user.css?swm49i");
-      @import url("https://kommunisterna.org/sites/all/modules/calendar/css/calendar_multiday.css?swm49i");
-      @import url("https://kommunisterna.org/sites/all/modules/views/css/views.css?swm49i");
-    </style>
-    <style type="text/css" media="all">
-      @import url("https://kommunisterna.org/sites/all/modules/ctools/css/ctools.css?swm49i");
-      @import url("https://kommunisterna.org/sites/all/modules/panels/css/panels.css?swm49i");
-      @import url("https://kommunisterna.org/sites/all/modules/panels/plugins/layouts/flexible/flexible.css?swm49i");
-      @import url("https://kommunisterna.org/sites/all/modules/panels/plugins/layouts/onecol/onecol.css?swm49i");
-      @import url("https://kommunisterna.org/sites/default/files/ctools/css/ad4a0f5cd317eb35045b426d55cbd0ab.css?swm49i");
-      @import url("https://kommunisterna.org/sites/all/modules/responsive_menus/styles/meanMenu/meanmenu.min.css?swm49i");
-    </style>
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://use.typekit.net/rke4end.css"
-      media="all"
-    />
-    <style type="text/css" media="print">
-      @import url("https://kommunisterna.org/sites/all/themes/responsive/styles/print.css?swm49i");
-    </style>
-    <style type="text/css" media="all">
-      @import url("https://kommunisterna.org/sites/all/themes/responsive/styles/styles-uncompressed.css?swm49i");
-      @import url("https://kommunisterna.org/sites/all/themes/responsive/styles/font-awesome/css/font-awesome.min.css?swm49i");
-    </style>
-  </head>
-  <body class="html {% if page.url == '/' %}front{% endif %}">
-    <div id="skip-link">
-      <a href="#main-content" class="element-invisible element-focusable"
-        >Hoppa till huvudinnehåll</a
-      >
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="MobileOptimized" content="width" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="HandheldFriendly" content="true" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- responsive favicons: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144"
+    href="https://kommunisterna.org/sites/all/themes/responsive/images/favicon/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152"
+    href="https://kommunisterna.org/sites/all/themes/responsive/images/favicon/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png"
+    href="https://kommunisterna.org/sites/all/themes/responsive/images/favicon/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png"
+    href="https://kommunisterna.org/sites/all/themes/responsive/images/favicon/favicon-16x16.png" sizes="16x16" />
+  <title>
+    {% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{
+    site.title }}{% endif %}
+  </title>
+  {% seo %}
+
+  <style type="text/css" media="all">
+    @import url("https://kommunisterna.org/sites/all/themes/responsive/styles/font-awesome/css/font-awesome.min.css?swm49i");
+  </style>
+  <style>
+    @import url("/assets/styles/fonts.css");
+    @import url("/assets/styles/main.css");
+  </style>
+</head>
+
+<body>
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Hoppa till huvudinnehåll</a>
+  </div>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span class="party">
+        <a href="{{ '/' | relative_url }}">
+          <img src="/assets/media/flagga.svg" alt="Kommunistiska Partiet" />
+          <span>{{ site.title }}</span>
+        </a>
+      </span>
+      <nav class="nav">
+        <a href="#har-staller-vi-upp">Här ställer vi upp</a>
+        <a href="#viktigaste-fragor">Våra frågor</a>
+        <a href="#a-o">Politik A–Ö</a>
+        <a href="#stod-oss">Stöd oss</a>
+        <a href="https://kommunisterna.org">Kommunistiska Partiet</a>
+        <a href="mailto:info@kommunisterna.org?subject=Press">Press</a>
+        <a href="https://proletaren.se">Proletären</a>
+      </nav>
     </div>
+  </div>
 
-    <div id="header-wrapper">
-      <div id="site-header" class="grid grid-pad">
-        <div class="inner">
-          <div class="site-header-logo col-5-12">
-            <a href="{{ '/' | relative_url }}">
-              <img src="{{ site.logotype }}" alt="Kommunistiska Partiet" />
-            </a>
-          </div>
-        </div>
-      </div>
+  <a id="main-content"></a>
+
+  {{ content }}
+
+  <footer>
+    <div class="inner">
+      <img class="foot-flag"
+        src="https://kommunisterna.org/sites/all/themes/responsive/images/logotyp-180112-flagga.png"
+        alt="Kommunistiska Partiet" />
+      <p class="foot-line"><em>Postadress:</em> Box 31 187, 400 32 Göteborg &nbsp;-&nbsp; <em>Besöksadress:</em> Fjärde
+        Långgatan 8, Göteborg</p>
+      <p class="foot-line"><em>Tel:</em> 031-12 26 31 &nbsp;-&nbsp; <em>E-post:</em> <a href="mailto:info@kommunisterna.org">info@kommunisterna.org</a></p>
+      <p class="foot-more"><a href="https://kommunisterna.org/kontakt">Fler kontaktuppgifter till kommunisterna</a></p>
     </div>
+  </footer>
+</body>
 
-    <a id="main-content"></a>
-
-    {{ content }}
-
-    <div id="footer-wrapper">
-      <div id="footer" class="grid grid-pad">
-        <div id="footer-region" class="col-1-1">
-          <div class="region region-footer">
-            <div id="block-block-6" class="block block-block">
-              <div class="content">
-                <p>
-                  <img
-                    src="https://kommunisterna.org/sites/all/themes/responsive/images/logotyp-180112-flagga.png"
-                    alt="Kommunistiska Partiet"
-                  /><br />
-                  <em>Postadress:</em> Box 31 187, 400 32
-                  Göteborg&nbsp;&nbsp;-&nbsp;&nbsp;<em>Besöksadress:</em> Fjärde
-                  Långgatan 8, Göteborg<br />
-                  <em>Tel:</em>&nbsp;031-12 26 31
-                  &nbsp;&nbsp;-&nbsp;&nbsp;<em>E-post:</em>&nbsp;<a
-                    href="mailto:info@kommunisterna.org"
-                    >info@kommunisterna.org</a
-                  ><br />
-                  <a href="https://kommunisterna.org/kontakt"
-                    >Fler kontaktuppgifter till kommunisterna</a
-                  >
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
 </html>

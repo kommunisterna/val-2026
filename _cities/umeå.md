@@ -1,6 +1,7 @@
 ---
 title: Umeå
 email: umea@kommunisterna.org
+coordinates: [63.825, 20.263]
 candidate_lists:
   - title: Kommunval
     candidates:

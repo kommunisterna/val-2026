@@ -1,6 +1,7 @@
 ---
 title: Helsingborg
 email: helsingborg@kommunisterna.org
+coordinates: [56.046, 12.694]
 candidate_lists:
   - title: Kommunval
     candidates:

@@ -1,6 +1,7 @@
 ---
 title: Kramfors
 email: kramfors@kommunisterna.org
+coordinates: [62.93, 17.781]
 candidate_lists:
   - title: Kommunval
     candidates:

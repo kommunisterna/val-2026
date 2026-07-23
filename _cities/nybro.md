@@ -1,6 +1,7 @@
 ---
 title: Nybro
 email: nybro@kommunisterna.org
+coordinates: [56.743, 15.905]
 candidate_lists:
   - title: Kommunval
     candidates:

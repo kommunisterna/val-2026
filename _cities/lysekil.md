@@ -1,6 +1,7 @@
 ---
 title: Lysekil
 email: lysekil@kommunisterna.org
+coordinates: [58.275, 11.435]
 candidate_lists:
   - title: Kommunval
     candidates:

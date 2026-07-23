@@ -1,6 +1,7 @@
 ---
 title: Örebro
 email: orebro@kommunisterna.org
+coordinates: [59.275, 15.213]
 candidate_lists:
   - title: Kommunval
     candidates:

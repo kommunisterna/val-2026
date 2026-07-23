@@ -1,20 +1,13 @@
-title: Kommunistiska Partiet
-description: Valsida
-url: ""
+title: Valet 2026
+description: Kommunistiska Partiets valsida för 2026
+url: "https://val.kommunisterna.org"
 baseurl: ""
-logotype: https://kommunisterna.org/sites/all/themes/responsive/images/logotyp-hemsida4.png
 
 collections:
   cities:
-    output: true
-    permalink: /:slug/
+    output: false
 
 defaults:
-  - scope:
-      path: ""
-      type: "cities"
-    values:
-      layout: "city"
 
 plugins:
   - jekyll-seo-tag

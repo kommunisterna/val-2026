@@ -1,6 +1,7 @@
 ---
 title: Stockholm
 email: stockholm@kommunisterna.org
+coordinates: [59.329, 18.068]
 candidate_lists:
   - title: Kommunval
     candidates:

@@ -1,6 +1,7 @@
 ---
 title: Jönköping
 email: jonkoping@kommunisterna.org
+coordinates: [57.782, 14.164]
 candidate_lists:
   - title: Kommunval
     candidates:

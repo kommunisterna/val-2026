@@ -1,6 +1,7 @@
 ---
 title: Sundsvall
 email: sundsvall@kommunisterna.org
+coordinates: [62.39, 17.306]
 candidate_lists:
   - title: Kommunval
     candidates:

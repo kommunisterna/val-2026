@@ -1,6 +1,7 @@
 ---
 title: Gislaved
 email: gislaved@kommunisterna.org
+coordinates: [57.304, 13.541]
 candidate_lists:
   - title: Kommunval
     candidates:

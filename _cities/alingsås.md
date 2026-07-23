@@ -1,6 +1,7 @@
 ---
 title: Alingsås
 email: alingsas@kommunisterna.org
+coordinates: [57.926, 12.534]
 candidate_lists:
   - title: Kommunval
     candidates:
