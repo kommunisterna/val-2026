@@ -476,32 +476,9 @@ details[open] .plus {
   margin: 0 0 18px;
 }
 
-.city-grid {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.city-vallista--placeholder {
-  border: 2px dashed var(--red);
-  background: var(--cream);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 3 / 4;
-  color: #777;
-  font-size: 0.85rem;
-  text-align: center;
-  padding: 10px;
-}
-
-.btn--disabled {
-  background: #ccc;
-  color: #666;
-  box-shadow: none;
-  border-color: #ccc;
-  cursor: default;
+.city-flyer a {
+  display: inline-block;
+  margin-bottom: 1em;
 }
 
 .kandidater-block {
@@ -529,6 +506,23 @@ details[open] .plus {
   break-inside: avoid;
 }
 
+.ballot {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+.ballot > a {
+  display: block;
+  width: 50%;
+}
+
+.ballot img {
+  width: 100%;
+}
+
 .city-list-label {
   text-transform: uppercase;
   font-size: 0.8rem;
@@ -549,6 +543,13 @@ details[open] .plus {
   margin: 0 0 16px;
   max-width: 68ch;
   color: #444;
+}
+
+.placeholder {
+  background: var(--cream);
+  border: 2px dashed var(--red);
+  text-align: center;
+  padding: 10px;
 }
 
 .quotes {

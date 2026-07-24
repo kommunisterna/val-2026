@@ -1,11 +1,11 @@
 ---
 title: Alingsås
 email: alingsas@kommunisterna.org
-flyer: assets/media/valflygblad/Alingsås.pdf
+flyer: assets/media/valflygblad/alingsas.pdf
 coordinates: [57.926, 12.534]
 candidate_lists:
   - title: Kommunval
-    ballot: assets/media/valsedlar/ValsedelAlingsås.png
+    ballot: assets/media/valsedlar/alingsas.png
     candidates:
       - Lars-Olof Törnberg, Undersköterska
       - Frida Eliasson Wilck, Sjuksköterska

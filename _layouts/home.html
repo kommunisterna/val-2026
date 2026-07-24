@@ -6,7 +6,7 @@ layout: default
   <div class="masthead-inner">
     <h1><span class="accent">Välfärd</span> i stället för vapen</h1>
     <div class="masthead-content">
-    {{ site.data.main.content | markdownify }}
+      {{ site.data.main.content | markdownify }}
     </div>
   </div>
 </div>
@@ -28,218 +28,239 @@ layout: default
         </div>
 
         <div class="city-detail-stack" id="city-detail-stack">
-        {% for city in ordered_cities %}
-        {% assign city_anchor = city.slug | slugify | replace: 'å', 'a' | replace: 'ä', 'a' | replace: 'ö', 'o' %}
-        <article class="city-panel" id="{{ city_anchor }}" hidden>
-          <button class="city-copy-link" data-anchor="{{ city_anchor }}" aria-label="Kopiera länk" title="Kopiera länk">🔗</button>
-          <h3>{{ city.title }}</h3>
-          <p class="city-contact"><b>E-post:</b> <a href="mailto:{{ city.email }}">{{ city.email }}</a></p>
-          <p class="city-summary">{{ city.content | strip_html | truncatewords: 40 }}</p>
-
-          <p class="dl-heading">Kommunisternas politik för {{ city.title }}</p>
-          <div class="city-grid">
-            <div class="city-vallista city-vallista--placeholder">Flygblad och kandidatbild kommer inom kort</div>
-            <div>
-              <span class="btn btn--disabled">Valflygblad kommer inom kort</span>
-            </div>
-          </div>
-
-          {% if city.candidate_lists and city.candidate_lists.size > 0 %}
-          <div class="kandidater-block">
-            <p class="city-list-label">Våra kandidater</p>
-            {% for list in city.candidate_lists %}
-            <h4>{{ list.title }}</h4>
-            <ol class="kandidat-list">
-              {% for candidate in list.candidates %}
-              <li>{{ candidate }}</li>
-              {% endfor %}
-            </ol>
-            {% endfor %}
-          </div>
-          {% endif %}
-
-
-        </article>
-        {% endfor %}
-      </div>
-
-      <script>
-        const cityData = [
           {% for city in ordered_cities %}
-          {
-            slug: {{ city.slug | jsonify }},
-            anchor: {{ city.slug | slugify | replace: 'å', 'a' | replace: 'ä', 'a' | replace: 'ö', 'o' | jsonify }},
-            title: {{ city.title | jsonify }},
-            email: {{ city.email | jsonify }},
-            coordinates: {{ city.coordinates | jsonify }}
-          }{% unless forloop.last %},{% endunless %}
+          {% assign city_anchor = city.slug | slugify | replace: 'å', 'a' | replace: 'ä', 'a' | replace: 'ö', 'o' %}
+          <article class="city-panel" id="{{ city_anchor }}" hidden>
+            <button class="city-copy-link" data-anchor="{{ city_anchor }}" aria-label="Kopiera länk"
+              title="Kopiera länk">🔗</button>
+            <h3>{{ city.title }}</h3>
+            {% if city.website %}
+            <p class="city-contact"><b>Webbplats:</b> <a href="{{ city.website }}">{{ city.email }}</a></p>
+            {% endif %}
+            <p class="city-contact"><b>E-post:</b> <a href="mailto:{{ city.email }}">{{ city.email }}</a></p>
+            <p class="city-summary">{{ city.content | strip_html | truncatewords: 40 }}</p>
+
+            <p class="dl-heading">Kommunisternas politik för {{ city.title }}</p>
+            <div class="city-grid">
+              {% if city.flyer %}
+              <div class="city-flyer">
+                <a href="{{ city.flyer | relative_url }}" target="_blank">Öppna flygbladet i nytt fönster</a>
+                <iframe
+                  src="{{ city.flyer | relative_url }}"
+                  frameBorder="0"
+                  scrolling="auto"
+                  height="500px"
+                  width="100%"
+                ></iframe>
+              </div>
+              {% else %}
+              <p class="placeholder">Flygblad kommer snart.</p>
+              {% endif %}
+            </div>
+
+            {% if city.candidate_lists and city.candidate_lists.size > 0 %}
+            <div class="kandidater-block">
+              <p class="city-list-label">Våra kandidater</p>
+              {% for list in city.candidate_lists %}
+              <h4>{{ list.title }}</h4>
+              <ol class="kandidat-list">
+                {% for candidate in list.candidates %}
+                <li>{{ candidate }}</li>
+                {% endfor %}
+              </ol>
+              {% if list.ballot %}
+              <div class="ballot">
+                <a href="{{ list.ballot | relative_url }}" target="_blank">
+                  <img src="{{ list.ballot | relative_url }}" alt="Valsedel för {{ list.title }} i {{ city.title }}" title="Öppna valsedeln i nytt fönster" />
+                </a>
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+            {% endif %}
+
+
+          </article>
+          {% endfor %}
+        </div>
+
+        <script>
+          const cityData = [
+            {% for city in ordered_cities %}
+            {
+              slug: {{ city.slug | jsonify }},
+              anchor: {{ city.slug | slugify | replace: 'å', 'a' | replace: 'ä', 'a' | replace: 'ö', 'o' | jsonify }},
+              title: {{ city.title | jsonify }},
+              email: {{ city.email | jsonify }},
+              coordinates: {{ city.coordinates | jsonify }}
+            } {% unless forloop.last %},{% endunless %}
           {% endfor %}
         ];
 
-        document.addEventListener('DOMContentLoaded', function () {
-          const mapHost = document.getElementById('city-map');
-          const cityList = document.getElementById('city-list');
-          const cityDetailStack = document.getElementById('city-detail-stack');
+          document.addEventListener('DOMContentLoaded', function () {
+            const mapHost = document.getElementById('city-map');
+            const cityList = document.getElementById('city-list');
+            const cityDetailStack = document.getElementById('city-detail-stack');
 
-          const bounds = L.latLngBounds(cityData.map(function (city) {
-            return city.coordinates;
-          }).filter(v => v));
+            const bounds = L.latLngBounds(cityData.map(function (city) {
+              return city.coordinates;
+            }).filter(v => v));
 
-          const map = L.map(mapHost, {
-            zoomControl: true,
-            scrollWheelZoom: true
-          });
-
-          map.fitBounds(bounds, {
-            padding: [0, 0]
-          });
-
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: '&copy; <a href="https://www.osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
-          }).addTo(map);
-
-          const markerIcon = L.icon({
-            iconUrl: '{{ "/assets/media/flagga.svg" | relative_url }}',
-            iconSize: [24, 24],
-            iconAnchor: [5, 24]
-          });
-
-          const markerMap = new Map();
-          const cityAnchors = cityData.map(function (city) {
-            return city.anchor;
-          });
-
-          let carouselTimer = null;
-          let isCarouselMode = false;
-          let currentCarouselIndex = 0;
-
-          cityData.forEach(function (city) {
-            const button = document.createElement('a');
-            button.className = 'city-button';
-            button.href = '#' + city.anchor;
-            button.textContent = city.title;
-            button.dataset.slug = city.anchor;
-            button.setAttribute('aria-pressed', 'false');
-            button.addEventListener('click', function (e) {
-              e.preventDefault();
-              selectCity(city.anchor, true);
-            });
-            cityList.appendChild(button);
-
-            const marker = L.marker(city.coordinates, { icon: markerIcon }).addTo(map);
-            marker.bindTooltip(city.title, { direction: 'top', offset: [0, -10] });
-            marker.addEventListener('click', function () {
-              selectCity(city.anchor, true);
-            });
-            markerMap.set(city.anchor, marker);
-          });
-
-          function selectCity(anchor, isManual) {
-            const city = cityData.find(function (entry) {
-              return entry.anchor === anchor;
+            const map = L.map(mapHost, {
+              zoomControl: true,
+              scrollWheelZoom: true
             });
 
-            cityList.querySelectorAll('.city-button').forEach(function (button) {
-              const isSelected = button.dataset.slug === anchor;
-              button.classList.toggle('is-selected', isSelected);
-              button.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+            map.fitBounds(bounds, {
+              padding: [0, 0]
             });
 
-            markerMap.forEach(function (marker, key) {
-              if (key === anchor) {
-                marker.openTooltip();
-              } else {
-                marker.closeTooltip();
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              maxZoom: 18,
+              attribution: '&copy; <a href="https://www.osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
+            }).addTo(map);
+
+            const markerIcon = L.icon({
+              iconUrl: '{{ "/assets/media/flagga.svg" | relative_url }}',
+              iconSize: [24, 24],
+              iconAnchor: [5, 24]
+            });
+
+            const markerMap = new Map();
+            const cityAnchors = cityData.map(function (city) {
+              return city.anchor;
+            });
+
+            let carouselTimer = null;
+            let isCarouselMode = false;
+            let currentCarouselIndex = 0;
+
+            cityData.forEach(function (city) {
+              const button = document.createElement('a');
+              button.className = 'city-button';
+              button.href = '#' + city.anchor;
+              button.textContent = city.title;
+              button.dataset.slug = city.anchor;
+              button.setAttribute('aria-pressed', 'false');
+              button.addEventListener('click', function (e) {
+                e.preventDefault();
+                selectCity(city.anchor, true);
+              });
+              cityList.appendChild(button);
+
+              const marker = L.marker(city.coordinates, { icon: markerIcon }).addTo(map);
+              marker.bindTooltip(city.title, { direction: 'top', offset: [0, -10] });
+              marker.addEventListener('click', function () {
+                selectCity(city.anchor, true);
+              });
+              markerMap.set(city.anchor, marker);
+            });
+
+            function selectCity(anchor, isManual) {
+              const city = cityData.find(function (entry) {
+                return entry.anchor === anchor;
+              });
+
+              cityList.querySelectorAll('.city-button').forEach(function (button) {
+                const isSelected = button.dataset.slug === anchor;
+                button.classList.toggle('is-selected', isSelected);
+                button.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+              });
+
+              markerMap.forEach(function (marker, key) {
+                if (key === anchor) {
+                  marker.openTooltip();
+                } else {
+                  marker.closeTooltip();
+                }
+              });
+
+              cityDetailStack.querySelectorAll('.city-panel').forEach(function (article) {
+                const isCurrent = article.id === anchor;
+                article.hidden = !isCurrent;
+              });
+
+              if (isManual && window.location.hash !== '#' + anchor) {
+                window.location.hash = '#' + anchor;
               }
-            });
 
-            cityDetailStack.querySelectorAll('.city-panel').forEach(function (article) {
-              const isCurrent = article.id === anchor;
-              article.hidden = !isCurrent;
-            });
-
-            if (isManual && window.location.hash !== '#' + anchor) {
-              window.location.hash = '#' + anchor;
-            }
-
-            if (city) {
-              map.setView(city.coordinates, 7, { animate: true });
-              if (isManual) {
-                const cityDetail = document.getElementById(anchor);
-                if (cityDetail && window.location.hash === '#' + anchor) {
-                  cityDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              if (city) {
+                map.setView(city.coordinates, 7, { animate: true });
+                if (isManual) {
+                  const cityDetail = document.getElementById(anchor);
+                  if (cityDetail && window.location.hash === '#' + anchor) {
+                    cityDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
                 }
               }
             }
-          }
 
-          function startCarousel() {
-            if (isCarouselMode) return;
-            isCarouselMode = true;
-            currentCarouselIndex = 0;
-            cycleToNextCity();
-          }
-
-          function cycleToNextCity() {
-            if (!isCarouselMode) return;
-            const anchor = cityAnchors[currentCarouselIndex];
-            selectCity(anchor, false);
-            currentCarouselIndex = (currentCarouselIndex + 1) % cityAnchors.length;
-            carouselTimer = setTimeout(cycleToNextCity, 3000);
-          }
-
-          function stopCarousel() {
-            isCarouselMode = false;
-            if (carouselTimer) {
-              clearTimeout(carouselTimer);
-              carouselTimer = null;
+            function startCarousel() {
+              if (isCarouselMode) return;
+              isCarouselMode = true;
+              currentCarouselIndex = 0;
+              cycleToNextCity();
             }
-          }
 
-          const initialAnchor = window.location.hash.replace('#', '');
-          if (cityAnchors.includes(initialAnchor)) {
-            selectCity(initialAnchor, false);
-          } else {
-            startCarousel();
-          }
-
-          window.addEventListener('hashchange', function () {
-            const hashAnchor = window.location.hash.replace('#', '');
-            if (cityAnchors.includes(hashAnchor)) {
-              stopCarousel();
-              selectCity(hashAnchor, false);
+            function cycleToNextCity() {
+              if (!isCarouselMode) return;
+              const anchor = cityAnchors[currentCarouselIndex];
+              selectCity(anchor, false);
+              currentCarouselIndex = (currentCarouselIndex + 1) % cityAnchors.length;
+              carouselTimer = setTimeout(cycleToNextCity, 3000);
             }
-          });
 
-          // Stop the carousel when clicking anywhere inside the city accordion
-          const cityAccordion = document.getElementById('har-staller-vi-upp');
-          if (cityAccordion) {
-            cityAccordion.addEventListener('click', function () {
-              stopCarousel();
+            function stopCarousel() {
+              isCarouselMode = false;
+              if (carouselTimer) {
+                clearTimeout(carouselTimer);
+                carouselTimer = null;
+              }
+            }
+
+            const initialAnchor = window.location.hash.replace('#', '');
+            if (cityAnchors.includes(initialAnchor)) {
+              selectCity(initialAnchor, false);
+            } else {
+              startCarousel();
+            }
+
+            window.addEventListener('hashchange', function () {
+              const hashAnchor = window.location.hash.replace('#', '');
+              if (cityAnchors.includes(hashAnchor)) {
+                stopCarousel();
+                selectCity(hashAnchor, false);
+              }
             });
-          }
 
-          // Copy link button functionality
-          document.querySelectorAll('.city-copy-link').forEach(function (btn) {
-            btn.addEventListener('click', function (e) {
-              e.preventDefault();
-              const anchor = this.dataset.anchor;
-              const url = window.location.origin + window.location.pathname + '#' + anchor;
-              navigator.clipboard.writeText(url).then(function () {
-                const originalClass = btn.className;
-                btn.classList.add('copied');
-                btn.textContent = '✓';
-                setTimeout(function () {
-                  btn.className = originalClass;
-                  btn.textContent = '🔗';
-                }, 2000);
+            // Stop the carousel when clicking anywhere inside the city accordion
+            const cityAccordion = document.getElementById('har-staller-vi-upp');
+            if (cityAccordion) {
+              cityAccordion.addEventListener('click', function () {
+                stopCarousel();
+              });
+            }
+
+            // Copy link button functionality
+            document.querySelectorAll('.city-copy-link').forEach(function (btn) {
+              btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const anchor = this.dataset.anchor;
+                const url = window.location.origin + window.location.pathname + '#' + anchor;
+                navigator.clipboard.writeText(url).then(function () {
+                  const originalClass = btn.className;
+                  btn.classList.add('copied');
+                  btn.textContent = '✓';
+                  setTimeout(function () {
+                    btn.className = originalClass;
+                    btn.textContent = '🔗';
+                  }, 2000);
+                });
               });
             });
           });
-        });
-      </script>
-    </div>
+        </script>
+      </div>
   </details>
 
   <details class="accordion" id="viktigaste-fragor">
@@ -267,36 +288,37 @@ layout: default
       {% assign policy_letters = '' | split: ',' %}
 
       {% for policy_topic in sorted_policy_topics %}
-        {% assign first_letter = policy_topic.title | strip | upcase | slice: 0, 1 %}
-        {% unless policy_letters contains first_letter %}
-          {% assign policy_letters = policy_letters | push: first_letter %}
-        {% endunless %}
+      {% assign first_letter = policy_topic.title | strip | upcase | slice: 0, 1 %}
+      {% unless policy_letters contains first_letter %}
+      {% assign policy_letters = policy_letters | push: first_letter %}
+      {% endunless %}
       {% endfor %}
 
       {% assign policy_letters = policy_letters | sort %}
 
       <div class="az-grid">
         {% for letter in policy_letters %}
-          {% assign letter_entries = '' | split: ',' %}
-          {% for policy_topic in sorted_policy_topics %}
-            {% assign topic_letter = policy_topic.title | strip | upcase | slice: 0, 1 %}
-            {% if topic_letter == letter %}
-              {% assign letter_entries = letter_entries | push: policy_topic %}
-            {% endif %}
-          {% endfor %}
+        {% assign letter_entries = '' | split: ',' %}
+        {% for policy_topic in sorted_policy_topics %}
+        {% assign topic_letter = policy_topic.title | strip | upcase | slice: 0, 1 %}
+        {% if topic_letter == letter %}
+        {% assign letter_entries = letter_entries | push: policy_topic %}
+        {% endif %}
+        {% endfor %}
 
-          {% if letter_entries.size > 0 %}
-          <div class="az-letter">
-            <span>{{ letter }}</span>
-            {% for policy_topic in letter_entries %}
-              <p class="az-item">
-                <b>{{ policy_topic.title }}</b>
-                {% if policy_topic.description %} — {{ policy_topic.description }}{% endif %}
-                {% if policy_topic.link %}<a href="{{ policy_topic.link }}" target="_blank" rel="noopener">Läs mer</a>{% endif %}
-              </p>
-            {% endfor %}
-          </div>
-          {% endif %}
+        {% if letter_entries.size > 0 %}
+        <div class="az-letter">
+          <span>{{ letter }}</span>
+          {% for policy_topic in letter_entries %}
+          <p class="az-item">
+            <b>{{ policy_topic.title }}</b>
+            {% if policy_topic.description %} — {{ policy_topic.description }}{% endif %}
+            {% if policy_topic.link %}<a href="{{ policy_topic.link }}" target="_blank" rel="noopener">Läs mer</a>{%
+            endif %}
+          </p>
+          {% endfor %}
+        </div>
+        {% endif %}
         {% endfor %}
       </div>
     </div>
@@ -306,49 +328,59 @@ layout: default
 <section class="quotes">
   <p class="section-label">Våra kandidater</p>
   <div class="carousel-outer">
-    <button class="carousel-arrow prev" aria-label="Föregående" onclick="document.getElementById('kandidat-track').scrollBy({left:-220,behavior:'smooth'})">‹</button>
+    <button class="carousel-arrow prev" aria-label="Föregående"
+      onclick="document.getElementById('kandidat-track').scrollBy({left:-220,behavior:'smooth'})">‹</button>
     <div class="carousel-viewport">
       <div class="carousel-track" id="kandidat-track">
-        <div class="quote-card placeholder"><span class="ort">Stockholm</span><span class="status">Väntar på bild</span></div>
-        <div class="quote-card placeholder"><span class="ort">Göteborg</span><span class="status">Väntar på bild</span></div>
-        <div class="quote-card placeholder"><span class="ort">Malmö</span><span class="status">Väntar på bild</span></div>
-        <div class="quote-card placeholder"><span class="ort">Lund</span><span class="status">Väntar på bild</span></div>
-        <div class="quote-card placeholder"><span class="ort">Umeå</span><span class="status">Väntar på bild</span></div>
-        <div class="quote-card placeholder"><span class="ort">Växjö</span><span class="status">Väntar på bild</span></div>
+        <div class="quote-card placeholder"><span class="ort">Stockholm</span><span class="status">Väntar på bild</span>
+        </div>
+        <div class="quote-card placeholder"><span class="ort">Göteborg</span><span class="status">Väntar på bild</span>
+        </div>
+        <div class="quote-card placeholder"><span class="ort">Malmö</span><span class="status">Väntar på bild</span>
+        </div>
+        <div class="quote-card placeholder"><span class="ort">Lund</span><span class="status">Väntar på bild</span>
+        </div>
+        <div class="quote-card placeholder"><span class="ort">Umeå</span><span class="status">Väntar på bild</span>
+        </div>
+        <div class="quote-card placeholder"><span class="ort">Växjö</span><span class="status">Väntar på bild</span>
+        </div>
       </div>
     </div>
-    <button class="carousel-arrow next" aria-label="Nästa" onclick="document.getElementById('kandidat-track').scrollBy({left:220,behavior:'smooth'})">›</button>
+    <button class="carousel-arrow next" aria-label="Nästa"
+      onclick="document.getElementById('kandidat-track').scrollBy({left:220,behavior:'smooth'})">›</button>
   </div>
 </section>
 
 <script>
-(function(){
-  var track = document.getElementById('kandidat-track');
-  if (!track) return;
-  var autoTimer;
-  function startAuto(){
-    autoTimer = setInterval(function(){
-      if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) {
-        track.scrollTo({left: 0, behavior: 'smooth'});
-      } else {
-        track.scrollBy({left: 220, behavior: 'smooth'});
-      }
-    }, 3200);
-  }
-  function stopAuto(){ clearInterval(autoTimer); }
-  startAuto();
-  track.addEventListener('mouseenter', stopAuto);
-  track.addEventListener('mouseleave', startAuto);
-  track.addEventListener('touchstart', stopAuto, {passive: true});
-  document.querySelectorAll('.carousel-arrow').forEach(function(btn){
-    btn.addEventListener('click', function(){ stopAuto(); setTimeout(startAuto, 6000); });
-  });
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) stopAuto();
-})();
+  (function () {
+    var track = document.getElementById('kandidat-track');
+    if (!track) return;
+    var autoTimer;
+    function startAuto() {
+      autoTimer = setInterval(function () {
+        if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: 220, behavior: 'smooth' });
+        }
+      }, 3200);
+    }
+    function stopAuto() { clearInterval(autoTimer); }
+    startAuto();
+    track.addEventListener('mouseenter', stopAuto);
+    track.addEventListener('mouseleave', startAuto);
+    track.addEventListener('touchstart', stopAuto, { passive: true });
+    document.querySelectorAll('.carousel-arrow').forEach(function (btn) {
+      btn.addEventListener('click', function () { stopAuto(); setTimeout(startAuto, 6000); });
+    });
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) stopAuto();
+  })();
 </script>
 
 <section id="stod-oss" class="banner-wrap">
-  <a class="banner-link" href="https://proletaren.se/artikel/var-med-och-stark-kommunisterna-i-valet-2026/" target="_blank" rel="noopener">
-    <img src="{{ '/assets/media/valfond.png' | relative_url }}" alt="Bidra till Kommunistiska Partiets valfond. Swish: 123 563 6998, PG: 723044-4. Märk din insättning med 'Valfonden'. Skriv Anonym om du inte vill att ditt namn publiceras i Proletären." />
+  <a class="banner-link" href="https://proletaren.se/artikel/var-med-och-stark-kommunisterna-i-valet-2026/"
+    target="_blank" rel="noopener">
+    <img src="{{ '/assets/media/valfond.png' | relative_url }}"
+      alt="Bidra till Kommunistiska Partiets valfond. Swish: 123 563 6998, PG: 723044-4. Märk din insättning med 'Valfonden'. Skriv Anonym om du inte vill att ditt namn publiceras i Proletären." />
   </a>
 </section>

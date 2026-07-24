@@ -1,11 +1,11 @@
 ---
 title: Örebro
 email: orebro@kommunisterna.org
-flyer: assets/media/valflygblad/Örebro.pdf
+flyer: assets/media/valflygblad/orebro.pdf
 coordinates: [59.275, 15.213]
 candidate_lists:
   - title: Kommunval
-    ballot: assets/media/valsedlar/ValsedelÖrebro.png
+    ballot: assets/media/valsedlar/orebro.png
     candidates:
       - Morgan Pettersson, 35 år, lärare
       - Joeri Van der Sype, 35 år, it-konsult

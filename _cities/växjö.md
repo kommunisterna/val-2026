@@ -1,11 +1,11 @@
 ---
 title: Växjö
 email: vaxjo@kommunisterna.org
-flyer: assets/media/valflygblad/Växjö.pdf
+flyer: assets/media/valflygblad/vaxjo.pdf
 coordinates: [56.878, 14.809]
 candidate_lists:
   - title: Kommunval
-    ballot: assets/media/valsedlar/ValsedelVäxjö.png
+    ballot: assets/media/valsedlar/vaxjo.png
     candidates:
       - Jan-Åke Karlsson, gymnasielärare
       - Joaquin Castro, undersköterska
