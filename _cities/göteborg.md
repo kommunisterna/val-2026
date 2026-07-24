@@ -4,6 +4,7 @@ email: goteborg@kommunisterna.org
 coordinates: [57.708, 11.974]
 candidate_lists:
   - title: Kommunval
+    ballot_link: val.kommunisterna.org/val-2026/assets/media/valsedlar/ValsedelGöteborg.png
     candidates:
       - Pia Jacobsen, administratör
       - Simon Hedelin, järnvägsarbetare

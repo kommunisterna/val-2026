@@ -27,6 +27,12 @@ content:
       - name: website
         label: Webbsida
         type: string
+      - name: coordinates
+        label: Koordinater
+        type: number
+        list: true
+        min: 2
+        max: 2
       - name: flyer_link
         label: Länk till flygblad
         type: string

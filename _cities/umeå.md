@@ -4,6 +4,7 @@ email: umea@kommunisterna.org
 coordinates: [63.825, 20.263]
 candidate_lists:
   - title: Kommunval
+    ballot_link: val.kommunisterna.org/val-2026/assets/media/valsedlar/ValsedelUmeå.png
     candidates:
       - Andreas Mångberg, 37 år, pappersarbetare
       - Monica Lundberg, 44 år, undersköterska

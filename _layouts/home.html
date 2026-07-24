@@ -83,7 +83,7 @@ layout: default
 
           const bounds = L.latLngBounds(cityData.map(function (city) {
             return city.coordinates;
-          }));
+          }).filter(v => v));
 
           const map = L.map(mapHost, {
             zoomControl: true,

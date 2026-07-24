@@ -1,9 +1,11 @@
 ---
 title: Lund
 email: lund@kommunisterna.org
+flyer_link: val.kommunisterna.org/val-2026/assets/media/valflygblad/Lund.pdf
 coordinates: [55.704, 13.193]
 candidate_lists:
   - title: Kommunval
+    ballot_link: val.kommunisterna.org/val-2026/assets/media/valsedlar/ValsedelLund.png
     candidates:
       - Emil Nordh, 38 år, industriarbetare
       - Mårten Möller, 44 år, psykiatrihandledare
