@@ -4,7 +4,7 @@ email: stockholm@kommunisterna.org
 coordinates: [59.329, 18.068]
 candidate_lists:
   - title: Kommunval
-    ballot_link: val.kommunisterna.org/val-2026/assets/media/valsedlar/ValsedelStockholmKommun.png
+    ballot: assets/media/valsedlar/ValsedelStockholmKommun.png
     candidates:
       - Malin Åkerström Nurmi, lärare, Bredäng, 47 år
       - Hampus Parman, elektriker, Kungsholmen, 23 år
@@ -17,7 +17,7 @@ candidate_lists:
       - Karin Stenvall, pensionerat vårdbiträde, Hägersten, 71 år
       - Stefan Vilhelmsson, kock, Skärholmen, 48 år
   - title: Regionval
-    ballot_link: val.kommunisterna.org/val-2026/assets/media/valsedlar/ValsedelStockholmRegion.png
+    ballot: assets/media/valsedlar/ValsedelStockholmRegion.png
     candidates:
       - Ted Larsson, tunnelbaneförare, Tullinge, 26 år
       - Juni Bergman, studerande till undersköterska, Rosersberg, 23 år

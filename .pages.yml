@@ -33,9 +33,13 @@ content:
         list: true
         min: 2
         max: 2
-      - name: flyer_link
-        label: Länk till flygblad
-        type: string
+      - name: flyer
+        label: Flygblad
+        type: file
+        options:
+          extensions:
+            - pdf
+          path: assets/media/valflygblad
       - name: body
         label: Brödtext
         type: rich-text
@@ -50,9 +54,13 @@ content:
             label: Titel
             type: string
             required: true
-          - name: ballot_link
-            label: Länk till valsedel
-            type: string
+          - name: ballot
+            label: Valsedel
+            type: image
+            options:
+              extensions:
+                - png
+              path: assets/media/valsedlar
           - name: candidates
             label: Kandidater
             type: string
