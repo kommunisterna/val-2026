@@ -399,6 +399,12 @@ details[open] .plus {
   outline: none;
 }
 
+/* City carousel timer bar */
+.city-timer { height: 6px; width: 100%; margin-bottom: 8px; overflow: hidden; }
+.city-timer-fill { background: var(--red); width: 100%; height: 100%; }
+.city-timer-fill.running { transition: width 10s linear; width: 0%; }
+.city-timer-fill.stopped { transition: none; width: 0%; }
+
 .city-button.is-selected {
   background: var(--red);
   color: var(--white);

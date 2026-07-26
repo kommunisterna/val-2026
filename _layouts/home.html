@@ -23,6 +23,9 @@ layout: default
       {% assign ordered_cities = site.cities | sort: "title" %}
       <div class="map-layout">
         <div class="map-panel">
+          <div class="city-timer">
+            <div id="city-timer-fill" class="city-timer-fill"></div>
+          </div>
           <div class="city-list" id="city-list"></div>
           <div id="city-map" aria-label="Karta över Sverige med valorterna"></div>
         </div>
@@ -47,7 +50,7 @@ layout: default
               <div class="city-flyer">
                 <a href="{{ city.flyer | relative_url }}" target="_blank">Öppna flygbladet i nytt fönster</a>
                 <embed src="{{ city.flyer | relative_url }}" type="application/pdf" frameBorder="0" scrolling="auto" height="500px"
-                width="100%"></embed>
+                width="100%" loading="lazy"></embed>
               </div>
               {% else %}
               <p class="placeholder">Flygblad kommer snart.</p>
@@ -61,7 +64,7 @@ layout: default
                 {% endfor %}
 
                 {% for img_path in gallery_images %}
-                  <img src="{{ img_path | relative_url }}" alt="{{ city.title }} bild" loading="lazy" />
+                  <img src="{{ img_path | relative_url }}" alt="{{ city.title }} bild" />
                 {% endfor %}
               </div>
             </div>
@@ -143,6 +146,19 @@ layout: default
             let carouselTimer = null;
             let isCarouselMode = false;
             let currentCarouselIndex = 0;
+            let wasCarouselRunningBeforePause = false;
+            const CAROUSEL_INTERVAL = 10000;
+            const timerFill = document.getElementById('city-timer-fill');
+
+            function animateTimerFill() {
+              if (!timerFill) return;
+              // ensure not stopped, reset to full and then add running to animate to 0
+              timerFill.classList.remove('stopped');
+              timerFill.classList.remove('running');
+              // force reflow
+              void timerFill.offsetWidth;
+              timerFill.classList.add('running');
+            }
 
             cityData.forEach(function (city) {
               const button = document.createElement('a');
@@ -153,6 +169,7 @@ layout: default
               button.setAttribute('aria-pressed', 'false');
               button.addEventListener('click', function (e) {
                 e.preventDefault();
+                stopCarousel();
                 selectCity(city.anchor, true);
               });
               cityList.appendChild(button);
@@ -160,6 +177,7 @@ layout: default
               const marker = L.marker(city.coordinates, { icon: markerIcon }).addTo(map);
               marker.bindTooltip(city.title, { direction: 'top', offset: [0, -10] });
               marker.addEventListener('click', function () {
+                stopCarousel();
                 selectCity(city.anchor, true);
               });
               markerMap.set(city.anchor, marker);
@@ -215,8 +233,10 @@ layout: default
               if (!isCarouselMode) return;
               const anchor = cityAnchors[currentCarouselIndex];
               selectCity(anchor, false);
+              // start/refresh the visual timer
+              animateTimerFill();
               currentCarouselIndex = (currentCarouselIndex + 1) % cityAnchors.length;
-              carouselTimer = setTimeout(cycleToNextCity, 10000);
+              carouselTimer = setTimeout(cycleToNextCity, CAROUSEL_INTERVAL);
             }
 
             function stopCarousel() {
@@ -225,10 +245,15 @@ layout: default
                 clearTimeout(carouselTimer);
                 carouselTimer = null;
               }
+              if (timerFill) {
+                timerFill.classList.remove('running');
+                timerFill.classList.add('stopped');
+              }
             }
 
             const initialAnchor = window.location.hash.replace('#', '');
             if (cityAnchors.includes(initialAnchor)) {
+              stopCarousel();
               selectCity(initialAnchor, false);
             } else {
               startCarousel();
@@ -238,7 +263,7 @@ layout: default
               const hashAnchor = window.location.hash.replace('#', '');
               if (cityAnchors.includes(hashAnchor)) {
                 stopCarousel();
-                selectCity(hashAnchor, false);
+                selectCity(hashAnchor, true);
               }
             });
 
@@ -248,6 +273,12 @@ layout: default
               cityAccordion.addEventListener('click', function () {
                 stopCarousel();
               });
+              cityAccordion.addEventListener('mouseenter', function () {
+                  stopCarousel();
+              });
+              cityAccordion.addEventListener('touchstart', function () {
+                stopCarousel();
+              }, { passive: true });
             }
 
             // Copy link button functionality
@@ -354,7 +385,7 @@ layout: default
 
           {% if first_image %}
             <div class="quote-card">
-              <img src="{{ first_image | relative_url }}" alt="Kandidat från {{ city.title }}" />
+              <a href="#{{ city_anchor }}"><img src="{{ first_image | relative_url }}" alt="Kandidat från {{ city.title }}" /></a>
             </div>
           {% endif %}
         {% endfor %}
