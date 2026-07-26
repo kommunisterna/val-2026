@@ -45,13 +45,8 @@ layout: default
               {% if city.flyer %}
               <div class="city-flyer">
                 <a href="{{ city.flyer | relative_url }}" target="_blank">Öppna flygbladet i nytt fönster</a>
-                <iframe
-                  src="{{ city.flyer | relative_url }}"
-                  frameBorder="0"
-                  scrolling="auto"
-                  height="500px"
-                  width="100%"
-                ></iframe>
+                <iframe src="{{ city.flyer | relative_url }}" frameBorder="0" scrolling="auto" height="500px"
+                  width="100%"></iframe>
               </div>
               {% else %}
               <p class="placeholder">Flygblad kommer snart.</p>
@@ -71,7 +66,8 @@ layout: default
               {% if list.ballot %}
               <div class="ballot">
                 <a href="{{ list.ballot | relative_url }}" target="_blank">
-                  <img src="{{ list.ballot | relative_url }}" alt="Valsedel för {{ list.title }} i {{ city.title }}" title="Öppna valsedeln i nytt fönster" />
+                  <img src="{{ list.ballot | relative_url }}" alt="Valsedel för {{ list.title }} i {{ city.title }}"
+                    title="Öppna valsedeln i nytt fönster" />
                 </a>
               </div>
               {% endif %}
@@ -383,4 +379,23 @@ layout: default
     <img src="{{ '/assets/media/valfond.png' | relative_url }}"
       alt="Bidra till Kommunistiska Partiets valfond. Swish: 123 563 6998, PG: 723044-4. Märk din insättning med 'Valfonden'. Skriv Anonym om du inte vill att ditt namn publiceras i Proletären." />
   </a>
+</section>
+
+<section id="social-feed" class="banner-wrap social-feed">
+  <div>
+    <div id="fb-root"></div>
+    <div class="fb-page" data-href="https://www.facebook.com/kommunisterna" data-tabs="timeline" data-width="500px"
+      data-height="550px" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true"
+      data-show-facepile="false">
+    </div>
+  </div>
+  <div>
+    <div id="fb-root"></div>
+    <div class="fb-page" data-href="https://www.facebook.com/TidningenProletaren" data-tabs="timeline" data-width="500px"
+      data-height="550px" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true"
+      data-show-facepile="false">
+    </div>
+  </div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v16.0"
+    nonce="FxrxkDNL"></script>
 </section>

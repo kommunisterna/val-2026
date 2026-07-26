@@ -665,6 +665,18 @@ details[open] .plus {
   display: block;
 }
 
+.social-feed {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.social-feed > div {
+  margin: 10px auto;
+  border: 2px solid var(--black);
+}
+
 footer {
   margin-top: 20px;
   padding: 60px 24px 50px;
