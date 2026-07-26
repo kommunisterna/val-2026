@@ -411,6 +411,20 @@ details[open] .plus {
   display: none;
 }
 
+.city-gallery {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.city-gallery img {
+  width: 100%;
+  max-width: 284px;
+  display: block;
+  margin: 0 auto;
+}
+
 .leaflet-container {
   font: inherit;
 }
@@ -552,10 +566,6 @@ details[open] .plus {
   padding: 10px;
 }
 
-.quotes {
-  margin: 56px 0;
-}
-
 .carousel-outer {
   width: 100vw;
   position: relative;
@@ -563,7 +573,6 @@ details[open] .plus {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  padding: 0 60px;
 }
 
 .carousel-viewport {
@@ -612,7 +621,7 @@ details[open] .plus {
 
 .quote-card {
   flex: 0 0 auto;
-  width: 200px;
+  width: 300px;
   scroll-snap-align: start;
   border: 3px solid var(--black);
   overflow: hidden;
@@ -620,8 +629,6 @@ details[open] .plus {
 
 .quote-card img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
   display: block;
 }
 
@@ -712,10 +719,6 @@ footer a {
 }
 
 @media (max-width: 680px) {
-  .city-grid {
-    grid-template-columns: 1fr;
-  }
-
   .kandidat-list {
     columns: 1;
   }

@@ -42,15 +42,28 @@ layout: default
 
             <p class="dl-heading">Kommunisternas politik för {{ city.title }}</p>
             <div class="city-grid">
+              {% assign wanted = '/assets/media/citatbilder/' | append: city_anchor | append: '/' %}
               {% if city.flyer %}
               <div class="city-flyer">
                 <a href="{{ city.flyer | relative_url }}" target="_blank">Öppna flygbladet i nytt fönster</a>
                 <embed src="{{ city.flyer | relative_url }}" type="application/pdf" frameBorder="0" scrolling="auto" height="500px"
-                  width="100%"></embed>
+                width="100%"></embed>
               </div>
               {% else %}
               <p class="placeholder">Flygblad kommer snart.</p>
               {% endif %}
+              <div class="city-gallery">
+                {% assign gallery_images = '' | split: '' %}
+                {% for f in site.static_files %}
+                  {% if f.path contains wanted %}
+                    {% assign gallery_images = gallery_images | push: f.path %}
+                  {% endif %}
+                {% endfor %}
+
+                {% for img_path in gallery_images %}
+                  <img src="{{ img_path | relative_url }}" alt="{{ city.title }} bild" loading="lazy" />
+                {% endfor %}
+              </div>
             </div>
 
             {% if city.candidate_lists and city.candidate_lists.size > 0 %}
@@ -203,7 +216,7 @@ layout: default
               const anchor = cityAnchors[currentCarouselIndex];
               selectCity(anchor, false);
               currentCarouselIndex = (currentCarouselIndex + 1) % cityAnchors.length;
-              carouselTimer = setTimeout(cycleToNextCity, 3000);
+              carouselTimer = setTimeout(cycleToNextCity, 10000);
             }
 
             function stopCarousel() {
@@ -324,26 +337,29 @@ layout: default
 <section class="quotes">
   <p class="section-label">Våra kandidater</p>
   <div class="carousel-outer">
-    <button class="carousel-arrow prev" aria-label="Föregående"
-      onclick="document.getElementById('kandidat-track').scrollBy({left:-220,behavior:'smooth'})">‹</button>
     <div class="carousel-viewport">
       <div class="carousel-track" id="kandidat-track">
-        <div class="quote-card placeholder"><span class="ort">Stockholm</span><span class="status">Väntar på bild</span>
-        </div>
-        <div class="quote-card placeholder"><span class="ort">Göteborg</span><span class="status">Väntar på bild</span>
-        </div>
-        <div class="quote-card placeholder"><span class="ort">Malmö</span><span class="status">Väntar på bild</span>
-        </div>
-        <div class="quote-card placeholder"><span class="ort">Lund</span><span class="status">Väntar på bild</span>
-        </div>
-        <div class="quote-card placeholder"><span class="ort">Umeå</span><span class="status">Väntar på bild</span>
-        </div>
-        <div class="quote-card placeholder"><span class="ort">Växjö</span><span class="status">Väntar på bild</span>
-        </div>
+        {% assign ordered_cities_carousel = site.cities | sort: "title" %}
+        {% for city in ordered_cities_carousel %}
+          {% assign city_anchor = city.slug | slugify | replace: 'å', 'a' | replace: 'ä', 'a' | replace: 'ö', 'o' %}
+          {% assign city_citat_path = '/assets/media/citatbilder/' | append: city_anchor | append: '/' %}
+          {% assign first_image = nil %}
+
+          {% for f in site.static_files %}
+            {% if f.path contains city_citat_path and f.path contains '.webp' %}
+              {% assign first_image = f.path %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
+          {% if first_image %}
+            <div class="quote-card">
+              <img src="{{ first_image | relative_url }}" alt="Kandidat från {{ city.title }}" />
+            </div>
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
-    <button class="carousel-arrow next" aria-label="Nästa"
-      onclick="document.getElementById('kandidat-track').scrollBy({left:220,behavior:'smooth'})">›</button>
   </div>
 </section>
 
@@ -357,9 +373,9 @@ layout: default
         if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) {
           track.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
-          track.scrollBy({ left: 220, behavior: 'smooth' });
+          track.scrollBy({ left: 320, behavior: 'smooth' });
         }
-      }, 3200);
+      }, 5000);
     }
     function stopAuto() { clearInterval(autoTimer); }
     startAuto();
