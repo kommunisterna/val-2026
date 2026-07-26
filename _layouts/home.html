@@ -45,8 +45,8 @@ layout: default
               {% if city.flyer %}
               <div class="city-flyer">
                 <a href="{{ city.flyer | relative_url }}" target="_blank">Öppna flygbladet i nytt fönster</a>
-                <iframe src="{{ city.flyer | relative_url }}" frameBorder="0" scrolling="auto" height="500px"
-                  width="100%"></iframe>
+                <embed src="{{ city.flyer | relative_url }}" type="application/pdf" frameBorder="0" scrolling="auto" height="500px"
+                  width="100%"></embed>
               </div>
               {% else %}
               <p class="placeholder">Flygblad kommer snart.</p>
