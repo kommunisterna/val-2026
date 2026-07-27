@@ -1,10 +1,13 @@
 ---
 title: Gislaved
 email: gislaved@kommunisterna.org
-coordinates: [57.304, 13.541]
+coordinates:
+  - 57.304
+  - 13.541
+flyer: /assets/media/valflygblad/gislaved.pdf
 candidate_lists:
   - title: Kommunval
-    ballot: assets/media/valsedlar/gislaved.png
+    ballot: /assets/media/valsedlar/gislaved.png
     candidates:
       - Erik Anderson, Tidningsbud
       - Kent Heijel, Pensionerad verktygsarbetare
