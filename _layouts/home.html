@@ -80,10 +80,12 @@ layout: default
                 {% endfor %}
               </ol>
               {% if list.ballot %}
+              {% assign ballot_thumbnail = list.ballot | replace: '.png', '-thumb.webp' %}
               <div class="ballot">
                 <a href="{{ list.ballot | relative_url }}" target="_blank">
-                  <img src="{{ list.ballot | relative_url }}" alt="Valsedel för {{ list.title }} i {{ city.title }}"
-                    title="Öppna valsedeln i nytt fönster" />
+                  <img src="{{ ballot_thumbnail | relative_url }}" alt="Valsedel för {{ list.title }} i {{ city.title }}"
+                    title="Öppna valsedeln i nytt fönster"
+                    onerror="this.onerror=null; this.src='{{ list.ballot | relative_url }}';" />
                 </a>
               </div>
               {% endif %}
