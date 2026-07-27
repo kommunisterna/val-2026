@@ -29,7 +29,7 @@ candidate_lists:
       - Clair Barellos, 69 år, Pensionerad undersköterska, Kommunistiska Partiet
       - Nahuel Treuquepan, 47 år, Elevstödjare, Politisk aktivist
       - Stig Liess, 22 år, Varvsarbetare, Revolutionär Kommunistisk Ungdom
-      - Karing Brag, 72 år, Pensionerad socialarbetare, Kommunistiska Partiet
+      - Karin Brag, 72 år, Pensionerad socialarbetare, Kommunistiska Partiet
       - Rasmus Nilsson, 26 år, Studerande, Revolutionär Kommunistisk Ungdom
       - Leonard Andersson, 26 år, Studerande, Politisk aktivist
       - Peter Olsson, 37 år, Musiklärare, Kommunistiska Partiet
