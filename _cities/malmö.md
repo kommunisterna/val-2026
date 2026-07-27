@@ -1,7 +1,10 @@
 ---
 title: Malmö
 email: malmo@kommunisterna.org
-coordinates: [55.605, 13.003]
+coordinates:
+  - 55.605
+  - 13.003
+flyer: /assets/media/valflygblad/malmo.pdf
 candidate_lists:
   - title: Kommunval
     candidates:
