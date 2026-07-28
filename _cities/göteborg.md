@@ -1,10 +1,13 @@
 ---
 title: Göteborg
 email: goteborg@kommunisterna.org
-coordinates: [57.708, 11.974]
+coordinates:
+  - 57.708
+  - 11.974
+flyer: /assets/media/valflygblad/goteborg.pdf
 candidate_lists:
   - title: Kommunval
-    ballot: assets/media/valsedlar/goteborg.png
+    ballot: /assets/media/valsedlar/goteborg.png
     candidates:
       - Pia Jacobsen, administratör
       - Simon Hedelin, järnvägsarbetare
