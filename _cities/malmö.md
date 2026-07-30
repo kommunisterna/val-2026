@@ -34,4 +34,4 @@ candidate_lists:
       - Leonard Andersson, 26 år, Studerande, Politisk aktivist
       - Peter Olsson, 37 år, Musiklärare, Kommunistiska Partiet
 ---
-I Malmö har partiet bildat ett valförbund med Feministerna (tidigare Feministiskt Initiativ) i kommunvalet.
+I Malmö har partiet bildat ett valförbund med Feministerna (tidigare Feministiskt Initiativ) i kommunvalet. Den heter Feministerna och Kommunisterna.
