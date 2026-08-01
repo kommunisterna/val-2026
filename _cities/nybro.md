@@ -1,10 +1,14 @@
 ---
 title: Nybro
 email: nybro@kommunisterna.org
-coordinates: [56.743, 15.905]
+coordinates:
+  - 56.743
+  - 15.905
 candidate_lists:
   - title: Kommunval
-    ballot: assets/media/valsedlar/nybro.png
+    flyer: /assets/media/valflygblad/nybro.pdf
+    flyer_thumb: /assets/media/valflygblad/nybro.webp
+    ballot: /assets/media/valsedlar/nybro.png
     candidates:
       - Johan Karlsson
       - Tommy Segerström
