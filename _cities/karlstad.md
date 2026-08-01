@@ -1,11 +1,14 @@
 ---
 title: Karlstad
 email: karlstad@kommunisterna.org
-flyer: assets/media/valflygblad/karlstad.pdf
-coordinates: [59.379, 13.503]
+coordinates:
+  - 59.379
+  - 13.503
 candidate_lists:
   - title: Kommunval
-    ballot: assets/media/valsedlar/karlstad.png
+    flyer: /assets/media/valflygblad/karlstad.pdf
+    flyer_thumb: /assets/media/valflygblad/karlstad.webp
+    ballot: /assets/media/valsedlar/karlstad.png
     candidates:
       - Andreas Köhler, 32 år, industriarbetare
       - Angelica Ewen, 39 år, personlig assistent
