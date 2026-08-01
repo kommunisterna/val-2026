@@ -1,11 +1,14 @@
 ---
 title: Sundsvall
 email: sundsvall@kommunisterna.org
-flyer: assets/media/valflygblad/sundsvall.pdf
-coordinates: [62.39, 17.306]
+coordinates:
+  - 62.39
+  - 17.306
 candidate_lists:
   - title: Kommunval
-    ballot: assets/media/valsedlar/sundsvall.png
+    flyer: /assets/media/valflygblad/sundsvall.pdf
+    flyer_thumb: /assets/media/valflygblad/sundsvall.webp
+    ballot: /assets/media/valsedlar/sundsvall.png
     candidates:
       - Jakob Lejon, 26 år, montör
       - Peter Åhman, 71 år, pensionerad tjänsteman
