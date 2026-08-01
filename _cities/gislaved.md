@@ -4,9 +4,10 @@ email: gislaved@kommunisterna.org
 coordinates:
   - 57.304
   - 13.541
-flyer: /assets/media/valflygblad/gislaved.pdf
 candidate_lists:
   - title: Kommunval
+    flyer: /assets/media/valflygblad/gislaved.pdf
+    flyer_thumb: /assets/media/valflygblad/gislaved.webp
     ballot: /assets/media/valsedlar/gislaved.png
     candidates:
       - Erik Anderson, Tidningsbud
