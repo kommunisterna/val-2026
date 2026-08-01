@@ -1,11 +1,14 @@
 ---
 title: Lysekil
 email: lysekil@kommunisterna.org
-flyer: assets/media/valflygblad/lysekil.pdf
-coordinates: [58.275, 11.435]
+coordinates:
+  - 58.275
+  - 11.435
 candidate_lists:
   - title: Kommunval
-    ballot: assets/media/valsedlar/lysekil.png
+    flyer: /assets/media/valflygblad/lysekil.pdf
+    flyer_thumb: /assets/media/valflygblad/lysekil.webp
+    ballot: /assets/media/valsedlar/lysekil.png
     candidates:
       - Yngve Berlin
       - Britt-Marie Kjellgren
