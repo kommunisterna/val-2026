@@ -1,11 +1,14 @@
 ---
 title: Jönköping
 email: jonkoping@kommunisterna.org
-flyer: assets/media/valflygblad/jonkoping.pdf
-coordinates: [57.782, 14.164]
+coordinates:
+  - 57.782
+  - 14.164
 candidate_lists:
   - title: Kommunval
-    ballot: assets/media/valsedlar/jonkoping.png
+    flyer: /assets/media/valflygblad/jonkoping.pdf
+    flyer_thumb: /assets/media/valflygblad/jonkoping.webp
+    ballot: /assets/media/valsedlar/jonkoping.png
     candidates:
       - Tom Svensson, guldsmed
       - Annica Albertsson, pensionär/förskollärare
