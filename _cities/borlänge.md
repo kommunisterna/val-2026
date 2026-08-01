@@ -1,11 +1,14 @@
 ---
 title: Borlänge
 email: borlange@kommunisterna.org
-flyer: assets/media/valflygblad/borlange.pdf
-coordinates: [60.485, 15.433]
+coordinates:
+  - 60.485
+  - 15.433
 candidate_lists:
   - title: Kommunval
-    ballot: assets/media/valsedlar/borlange.png
+    flyer: /assets/media/valflygblad/borlange.pdf
+    flyer_thumb: /assets/media/valflygblad/borlange.webp
+    ballot: /assets/media/valsedlar/borlange.png
     candidates:
       - Joakim Karlsson, Tågvärd
       - Max Pernbeck, Lokförare
