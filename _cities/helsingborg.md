@@ -1,11 +1,14 @@
 ---
 title: Helsingborg
 email: helsingborg@kommunisterna.org
-flyer: assets/media/valflygblad/helsingborg.pdf
-coordinates: [56.046, 12.694]
+coordinates:
+  - 56.046
+  - 12.694
 candidate_lists:
   - title: Kommunval
-    ballot: assets/media/valsedlar/helsingborg.png
+    flyer: /assets/media/valflygblad/helsingborg.pdf
+    flyer_thumb: /assets/media/valflygblad/helsingborg.webp
+    ballot: /assets/media/valsedlar/helsingborg.png
     candidates:
       - Ellen Kall, 37 år, logoped
       - Jasmin El-Rameid, 56 år, bevakning
