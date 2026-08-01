@@ -46,15 +46,16 @@ layout: default
             <p class="dl-heading">Kommunisternas politik för {{ city.title }}</p>
             <div class="city-grid">
               {% assign wanted = '/assets/media/citatbilder/' | append: city_anchor | append: '/' %}
-              {% if city.flyer %}
+              {% if city.candidate_lists and city.candidate_lists.size > 0 %}
+              {% for list in city.candidate_lists %}
+              {% if list.flyer %}
               <div class="city-flyer">
-                <a href="{{ city.flyer | relative_url }}" target="_blank">Öppna flygbladet i nytt fönster</a>
-                <embed src="{{ city.flyer | relative_url }}" type="application/pdf" frameBorder="0" scrolling="auto" height="620px"
+                <a href="{{ list.flyer | relative_url }}" target="_blank">Öppna flygbladet i nytt fönster</a>
+                <embed src="{{ list.flyer | relative_url }}" type="application/pdf" frameBorder="0" scrolling="auto" height="620px"
                 width="100%" loading="lazy"></embed>
               </div>
-              {% else %}
-              <p class="placeholder">Flygblad kommer snart.</p>
               {% endif %}
+              {% endfor %}
               <div class="city-gallery">
                 {% assign gallery_images = '' | split: '' %}
                 {% for f in site.static_files %}
