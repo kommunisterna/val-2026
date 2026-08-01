@@ -52,7 +52,14 @@ content:
             type: file
             options:
               extensions:
-                - pdf               
+                - pdf
+              path: assets/media/valflygblad
+          - name: flyer_thumb
+            label: Flygblad framsida
+            type: image
+            options:
+              extensions:
+                - webp
               path: assets/media/valflygblad
           - name: ballot
             label: Valsedel
