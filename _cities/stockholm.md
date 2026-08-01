@@ -4,9 +4,10 @@ email: stockholm@kommunisterna.org
 coordinates:
   - 59.329
   - 18.068
-flyer: /assets/media/valflygblad/stockholm-kom.pdf
 candidate_lists:
   - title: Kommunval
+    flyer: /assets/media/valflygblad/stockholm-kom.pdf
+    flyer_thumb: /assets/media/valflygblad/stockholm-kom.webp
     ballot: /assets/media/valsedlar/stockholm-kommun.png
     candidates:
       - Malin Åkerström Nurmi, lärare, Bredäng, 47 år
@@ -20,6 +21,8 @@ candidate_lists:
       - Karin Stenvall, pensionerat vårdbiträde, Hägersten, 71 år
       - Stefan Vilhelmsson, kock, Skärholmen, 48 år
   - title: Regionval
+    flyer: /assets/media/valflygblad/stockholm-reg.pdf
+    flyer_thumb: /assets/media/valflygblad/stockholm-reg.webp
     ballot: /assets/media/valsedlar/stockholm-region.png
     candidates:
       - Ted Larsson, tunnelbaneförare, Tullinge, 26 år
