@@ -4,9 +4,10 @@ email: goteborg@kommunisterna.org
 coordinates:
   - 57.708
   - 11.974
-flyer: /assets/media/valflygblad/goteborg.pdf
 candidate_lists:
   - title: Kommunval
+    flyer: /assets/media/valflygblad/goteborg.pdf
+    flyer_thumb: /assets/media/valflygblad/goteborg.webp
     ballot: /assets/media/valsedlar/goteborg.png
     candidates:
       - Pia Jacobsen, administratör
