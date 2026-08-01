@@ -4,9 +4,10 @@ email: malmo@kommunisterna.org
 coordinates:
   - 55.605
   - 13.003
-flyer: /assets/media/valflygblad/malmo.pdf
 candidate_lists:
   - title: Kommunval
+    flyer: /assets/media/valflygblad/malmo.pdf
+    flyer_thumb: /assets/media/valflygblad/malmo.webp
     candidates:
       - Smilla Jalasjoki, 25, Personlig assistent, Kommunistiska Partiet
       - Rebecca Sunnerås Jonsson, 28, Lärare, Feministerna
@@ -34,4 +35,4 @@ candidate_lists:
       - Leonard Andersson, 26 år, Studerande, Politisk aktivist
       - Peter Olsson, 37 år, Musiklärare, Kommunistiska Partiet
 ---
-I Malmö har partiet bildat ett valförbund med Feministerna (tidigare Feministiskt Initiativ) i kommunvalet. Den heter Feministerna och Kommunisterna.
+I Malmö har partiet bildat ett valförbund med Feministerna (tidigare Feministiskt Initiativ) i kommunvalet. Det heter Feministerna och Kommunisterna.
