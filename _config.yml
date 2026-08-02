@@ -2,6 +2,7 @@ title: Valet 2026
 description: Kommunistiska Partiets valsida för 2026
 url: "https://val.kommunisterna.org"
 baseurl: ""
+image: /assets/media/frontbanner.webp
 
 collections:
   cities:
