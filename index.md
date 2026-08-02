@@ -1,4 +1,4 @@
 ---
 layout: home
-image: /assets/media/frontmatter.webp
+image: /assets/media/frontbanner.webp
 ---
