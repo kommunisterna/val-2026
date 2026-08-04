@@ -597,7 +597,7 @@ details[open] .plus {
   scroll-snap-type: x mandatory;
   scroll-padding-left: 20px;
   padding: 4px 20px 14px;
-  scrollbar-width: none;
+  scrollbar-width: thin;
 }
 
 .carousel-track::-webkit-scrollbar {
