@@ -201,11 +201,10 @@ layout: default
 
               if (city) {
                 map.setView(city.coordinates, 7, { animate: true });
-                if (isManual) {
-                  const cityDetail = document.getElementById(anchor);
-                  if (cityDetail && window.location.hash === '#' + anchor) {
-                    cityDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
+                const cityDetail = document.getElementById(anchor);
+                if (cityDetail) {
+                  const scrollBehavior = isManual ? 'smooth' : 'instant';
+                  cityDetail.scrollIntoView({ behavior: scrollBehavior, block: 'start' });
                 }
               }
             }
