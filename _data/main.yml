@@ -1,3 +1,20 @@
+navmenu:
+  - title: Här ställer vi upp
+    link: "#har-staller-vi-upp"
+  - title: Våra frågor
+    link: "#viktigaste-fragor"
+  - title: Politik A–Ö
+    link: "#a-o"
+  - title: Stöd oss
+    link: "#stod-oss"
+  - title: Kommunistiska Partiet
+    link: https://kommunisterna.org
+  - title: Organisera dig
+    link: https://kommunisterna.org/organisation/bli-medlem
+  - title: Kontakta oss
+    link: https://kommunisterna.org/kontakt
+  - title: Proletären
+    link: https://proletaren.se
 content: >-
   Kommunistiska Partiet går till val 2026 med ett tydligt krav: välfärd,
   bostäder, jobb och trygghet måste prioriteras framför militarism och

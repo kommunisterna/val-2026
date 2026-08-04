@@ -79,6 +79,19 @@ content:
     path: _data/main.yml
     format: yaml
     fields:
+      - name: navmenu
+        label: Navigeringsmeny
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Text
+            type: string
+            required: true
+          - name: link
+            label: Länk
+            type: string
+            required: true
       - name: content
         label: Innehåll
         type: rich-text

@@ -45,14 +45,9 @@
         </a>
       </span>
       <nav class="nav">
-        <a href="#har-staller-vi-upp">Här ställer vi upp</a>
-        <a href="#viktigaste-fragor">Våra frågor</a>
-        <a href="#a-o">Politik A–Ö</a>
-        <a href="#stod-oss">Stöd oss</a>
-        <a href="https://kommunisterna.org">Kommunistiska Partiet</a>
-        <a href="https://kommunisterna.org/organisation/bli-medlem">Organisera dig</a>
-        <a href="https://kommunisterna.org/kontakt">Kontakta oss</a>
-        <a href="https://proletaren.se">Proletären</a>
+        {% for item in site.data.main.navmenu %}
+        <a href="{{ item.link }}">{{ item.title }}</a>
+        {% endfor %}
       </nav>
     </div>
   </div>
