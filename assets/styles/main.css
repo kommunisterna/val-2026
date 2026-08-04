@@ -345,8 +345,13 @@ details[open] .plus {
 .map-layout {
   display: grid;
   grid-template-columns: 4fr 6fr;
-  gap: 18px;
+  gap: 20px;
   align-items: start;
+}
+
+.map-panel {
+  position: sticky;
+  top: 20px;
 }
 
 .map-panel,
@@ -354,6 +359,7 @@ details[open] .plus {
   border: 2px solid var(--black);
   background: #faf8ef;
   padding: 16px;
+  scroll-margin-top: 20px;
 }
 
 .panel-title-row {
@@ -427,6 +433,7 @@ details[open] .plus {
   gap: 12px;
   flex-wrap: wrap;
   margin-top: 12px;
+  justify-content: center;
 }
 
 .city-gallery img {
@@ -455,9 +462,7 @@ details[open] .plus {
 }
 
 .city-panel {
-  margin-bottom: 28px;
   color: var(--black);
-  position: relative;
 }
 
 .city-panel h3 {
@@ -535,6 +540,7 @@ details[open] .plus {
 .ballot > a {
   display: block;
   width: 50%;
+  max-width: 220px;
 }
 
 .ballot img {
@@ -720,6 +726,10 @@ footer a {
 @media (max-width: 900px) {
   .map-layout {
     grid-template-columns: 1fr;
+  }
+  .map-panel {
+    position: static;
+    top: 0;
   }
 }
 
