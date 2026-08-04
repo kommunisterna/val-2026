@@ -325,7 +325,9 @@ layout: default
 
           {% if first_image %}
             <div class="quote-card">
-              <a href="#{{ city_anchor }}"><img src="{{ first_image | relative_url }}" alt="Kandidat från {{ city.title }}" /></a>
+              <a href="#{{ city_anchor }}" title="Gå till {{ city.title }}">
+                <img src="{{ first_image | relative_url }}" alt="Kandidat från {{ city.title }}" />
+              </a>
             </div>
           {% endif %}
         {% endfor %}
