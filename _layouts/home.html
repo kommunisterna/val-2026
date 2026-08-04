@@ -29,9 +29,6 @@ layout: default
       {% assign ordered_cities = site.cities | sort: "title" %}
       <div class="map-layout">
         <div class="map-panel">
-          <div class="city-timer">
-            <div id="city-timer-fill" class="city-timer-fill"></div>
-          </div>
           <div class="city-list" id="city-list"></div>
           <div id="city-map" aria-label="Karta över Sverige med valorterna"></div>
         </div>
@@ -153,23 +150,6 @@ layout: default
               return city.anchor;
             });
 
-            let carouselTimer = null;
-            let isCarouselMode = false;
-            let currentCarouselIndex = 0;
-            let wasCarouselRunningBeforePause = false;
-            const CAROUSEL_INTERVAL = 10000;
-            const timerFill = document.getElementById('city-timer-fill');
-
-            function animateTimerFill() {
-              if (!timerFill) return;
-              // ensure not stopped, reset to full and then add running to animate to 0
-              timerFill.classList.remove('stopped');
-              timerFill.classList.remove('running');
-              // force reflow
-              void timerFill.offsetWidth;
-              timerFill.classList.add('running');
-            }
-
             cityData.forEach(function (city) {
               const button = document.createElement('a');
               button.className = 'city-button';
@@ -179,7 +159,6 @@ layout: default
               button.setAttribute('aria-pressed', 'false');
               button.addEventListener('click', function (e) {
                 e.preventDefault();
-                stopCarousel();
                 selectCity(city.anchor, true);
               });
               cityList.appendChild(button);
@@ -187,7 +166,6 @@ layout: default
               const marker = L.marker(city.coordinates, { icon: markerIcon }).addTo(map);
               marker.bindTooltip(city.title, { direction: 'top', offset: [0, -10] });
               marker.addEventListener('click', function () {
-                stopCarousel();
                 selectCity(city.anchor, true);
               });
               markerMap.set(city.anchor, marker);
@@ -232,64 +210,17 @@ layout: default
               }
             }
 
-            function startCarousel() {
-              if (isCarouselMode) return;
-              isCarouselMode = true;
-              currentCarouselIndex = 0;
-              cycleToNextCity();
-            }
-
-            function cycleToNextCity() {
-              if (!isCarouselMode) return;
-              const anchor = cityAnchors[currentCarouselIndex];
-              selectCity(anchor, false);
-              // start/refresh the visual timer
-              animateTimerFill();
-              currentCarouselIndex = (currentCarouselIndex + 1) % cityAnchors.length;
-              carouselTimer = setTimeout(cycleToNextCity, CAROUSEL_INTERVAL);
-            }
-
-            function stopCarousel() {
-              isCarouselMode = false;
-              if (carouselTimer) {
-                clearTimeout(carouselTimer);
-                carouselTimer = null;
-              }
-              if (timerFill) {
-                timerFill.classList.remove('running');
-                timerFill.classList.add('stopped');
-              }
-            }
-
             const initialAnchor = window.location.hash.replace('#', '');
             if (cityAnchors.includes(initialAnchor)) {
-              stopCarousel();
               selectCity(initialAnchor, false);
-            } else {
-              startCarousel();
             }
 
             window.addEventListener('hashchange', function () {
               const hashAnchor = window.location.hash.replace('#', '');
               if (cityAnchors.includes(hashAnchor)) {
-                stopCarousel();
                 selectCity(hashAnchor, true);
               }
             });
-
-            // Stop the carousel when clicking anywhere inside the city accordion
-            const cityAccordion = document.getElementById('har-staller-vi-upp');
-            if (cityAccordion) {
-              cityAccordion.addEventListener('click', function () {
-                stopCarousel();
-              });
-              cityAccordion.addEventListener('mouseenter', function () {
-                  stopCarousel();
-              });
-              cityAccordion.addEventListener('touchstart', function () {
-                stopCarousel();
-              }, { passive: true });
-            }
 
             // Copy link button functionality
             document.querySelectorAll('.city-copy-link').forEach(function (btn) {
