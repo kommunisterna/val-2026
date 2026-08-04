@@ -37,9 +37,10 @@ layout: default
           {% for city in ordered_cities %}
           {% assign city_anchor = city.slug | slugify | replace: 'å', 'a' | replace: 'ä', 'a' | replace: 'ö', 'o' %}
           <article class="city-panel" id="{{ city_anchor }}" hidden>
-            <button class="city-copy-link" data-anchor="{{ city_anchor }}" aria-label="Kopiera länk"
-              title="Kopiera länk">🔗</button>
-            <h3>{{ city.title }}</h3>
+            <h3>{{ city.title }}
+              <button class="city-copy-link" data-anchor="{{ city_anchor }}" aria-label="Kopiera länk till {{ city.title }}"
+              title="Kopiera länk till {{ city.title }}">🔗</button>
+            </h3>
             {% if city.website %}
             <p class="city-contact"><b>Webbplats:</b> <a href="{{ city.website }}">{{ city.email }}</a></p>
             {% endif %}
@@ -230,7 +231,7 @@ layout: default
                 navigator.clipboard.writeText(url).then(function () {
                   const originalClass = btn.className;
                   btn.classList.add('copied');
-                  btn.textContent = '✓';
+                  btn.textContent = '✔️';
                   setTimeout(function () {
                     btn.className = originalClass;
                     btn.textContent = '🔗';

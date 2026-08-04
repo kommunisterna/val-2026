@@ -467,30 +467,23 @@ details[open] .plus {
 }
 
 .city-copy-link {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
   background: none;
   border: none;
-  color: var(--red);
   cursor: pointer;
   text-decoration: none;
   padding: 0;
   font-size: 1.2rem;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
 }
 
 .city-copy-link:hover,
 .city-copy-link:focus-visible {
-  color: var(--black);
+  opacity: 1;
 }
 
 .city-copy-link.copied {
-  color: var(--black);
+  opacity: 1;
 }
 
 
