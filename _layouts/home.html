@@ -34,6 +34,9 @@ layout: default
         </div>
 
         <div class="city-detail-stack" id="city-detail-stack">
+          <article class="city-panel">
+            <p class="dl-heading">Välj en ort i listan eller på kartan.</p>
+          </article>
           {% for city in ordered_cities %}
           {% assign city_anchor = city.slug | slugify | replace: 'å', 'a' | replace: 'ä', 'a' | replace: 'ö', 'o' %}
           <article class="city-panel" id="{{ city_anchor }}" hidden>
