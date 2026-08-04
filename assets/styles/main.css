@@ -137,6 +137,11 @@ h3,
   margin: 0 auto;
   padding: 56px 24px 46px;
 }
+.masthead-video iframe {
+  width: 100%;
+  max-width: 1052px;
+  aspect-ratio: 16 / 9;
+}
 .masthead-content {
   font-size: 1.15em;
 }
