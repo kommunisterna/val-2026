@@ -70,7 +70,9 @@ layout: default
                 {% endfor %}
 
                 {% for img_path in gallery_images %}
+                <a href="{{ img_path | relative_url }}" target="_blank" title="Öppna bild i nytt fönster">
                   <img src="{{ img_path | relative_url }}" alt="{{ city.title }} bild" />
+                </a>
                 {% endfor %}
               </div>
             </div>
