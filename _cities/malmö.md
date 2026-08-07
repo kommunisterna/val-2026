@@ -8,6 +8,7 @@ candidate_lists:
   - title: Kommunval
     flyer: /assets/media/valflygblad/malmo.pdf
     flyer_thumb: /assets/media/valflygblad/malmo.webp
+    ballot: /assets/media/valsedlar/malmo.png
     candidates:
       - Smilla Jalasjoki, 25, Personlig assistent, Kommunistiska Partiet
       - Rebecca Sunnerås Jonsson, 28, Lärare, Feministerna
